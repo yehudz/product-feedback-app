@@ -7,6 +7,7 @@ import GoBackBtnLight from './components/buttons/GoBackBtnLight'
 import GoBackBtnDark from './components/buttons/GoBackBtnDark'
 import { CaretLeft } from 'phosphor-react'
 import Head from 'next/head'
+import { Typography } from '@mui/material'
 
 const Home: NextPage = () => {
   return (
@@ -29,6 +30,14 @@ const Home: NextPage = () => {
         disableElevation 
         disableRipple 
         startIcon={<CaretLeft size={14} color="#CDD2EE" weight="bold"/>}>Go Back</GoBackBtnDark>
+        <Typography variant='h1' color="success.main">Sed egestas ante et vulputate volutpat</Typography>
+        <Typography variant='h2' color="success.main">Vestibulum volutpat acus a ultrices sagittis</Typography>
+        <Typography variant='h3' color="success.main">Pellentesque a diam sit amet mi ullamcorper vehicula</Typography>
+        <Typography variant='h4' color="success.main">Ut scelerisque hendrerit tellus. Integer sagittis</Typography>
+        <Typography variant='body1' color="success.main">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus hendrerit. Pellentesque aliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id, mattis vel, nisi. Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor eu nibh. Nullam mollis.</Typography>
+        <Typography variant='body2' color="success.main">Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae luctus metus libero eu augue. Morbi purus libero, faucibus adipiscing, commodo quis, gravida id, est. Sed lectus. Praesent elementum hendrerit tortor. Sed semper lorem at felis. Vestibulum volutpat, lacus a ultrices sagittis, mi neque euismod dui, eu pulvinar nunc sapien ornare nisl. Phasellus pede arcu</Typography>
+        <Typography variant='subtitle1' color="success.main">Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae luctus metus libero eu augue. Morbi purus libero, faucibus adipiscing, commodo quis, gravida id, est. Sed lectus. Praesent elementum hendrerit tortor. Sed semper lorem at felis. Vestibulum volutpat, lacus a ultrices sagittis, mi neque euismod dui, eu pulvinar nunc sapien ornare nisl. Phasellus pede arcu</Typography>
+
     </>
   )
 }
