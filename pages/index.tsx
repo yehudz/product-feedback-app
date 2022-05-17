@@ -5,10 +5,11 @@ import Button3 from './components/buttons/Button3'
 import Button4 from './components/buttons/Button4'
 import GoBackBtnLight from './components/buttons/GoBackBtnLight'
 import GoBackBtnDark from './components/buttons/GoBackBtnDark'
-import { CaretLeft } from 'phosphor-react'
+import { CaretLeft, CaretUp } from 'phosphor-react'
 import Head from 'next/head'
-import { Typography } from '@mui/material'
-
+import { Typography, Stack } from '@mui/material'
+import ButtonStyles from '../styles/Buttons.module.scss'
+import CategoryButton from './components/buttons/CategoryButton'
 const Home: NextPage = () => {
   return (
     <>
@@ -37,8 +38,13 @@ const Home: NextPage = () => {
         <Typography variant='body1' color="success.main">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Phasellus hendrerit. Pellentesque aliquet nibh nec urna. In nisi neque, aliquet vel, dapibus id, mattis vel, nisi. Sed pretium, ligula sollicitudin laoreet viverra, tortor libero sodales leo, eget blandit nunc tortor eu nibh. Nullam mollis.</Typography>
         <Typography variant='body2' color="success.main">Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae luctus metus libero eu augue. Morbi purus libero, faucibus adipiscing, commodo quis, gravida id, est. Sed lectus. Praesent elementum hendrerit tortor. Sed semper lorem at felis. Vestibulum volutpat, lacus a ultrices sagittis, mi neque euismod dui, eu pulvinar nunc sapien ornare nisl. Phasellus pede arcu</Typography>
         <Typography variant='subtitle1' color="success.main">Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae luctus metus libero eu augue. Morbi purus libero, faucibus adipiscing, commodo quis, gravida id, est. Sed lectus. Praesent elementum hendrerit tortor. Sed semper lorem at felis. Vestibulum volutpat, lacus a ultrices sagittis, mi neque euismod dui, eu pulvinar nunc sapien ornare nisl. Phasellus pede arcu</Typography>
-
+        <div className={`${ButtonStyles.upVoteButton}`}>
+          <CaretUp size={16} weight="bold"/>100
+        </div>
+        <CategoryButton variant='contained' disableElevation disableRipple>UX</CategoryButton>
+        <CategoryButton variant='contained' disableElevation disableRipple>Enhancement</CategoryButton>
     </>
+
   )
 }
 

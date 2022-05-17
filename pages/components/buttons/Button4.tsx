@@ -10,7 +10,7 @@ const Button4 = styled(Button)(({ theme }) => ({
   textTransform: 'none',
   backgroundColor: theme.palette.warning.dark,
   '&:hover': {
-    backgroundColor: '#E98888',
+    backgroundColor: '#CFD7FF',
   },
 }));
 

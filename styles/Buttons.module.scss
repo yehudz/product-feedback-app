@@ -1,0 +1,31 @@
+@use './variables.scss';
+
+.upVoteButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 53px;
+  width: 40px;
+  background-color: #F2F4FE;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: bold;
+  color: variables.$success-main;
+  cursor: pointer;
+  transition: all ease 200ms;
+  svg {
+    color: #4661E6;
+  }
+  &:hover {
+    background-color: #CFD7FF;
+  }
+}
+
+.active {
+  color: #fff;
+  background-color: #4661E6;
+  &:hover {
+    color: variables.$success-main;
+  }
+}
