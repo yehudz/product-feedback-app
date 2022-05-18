@@ -5,12 +5,14 @@ import Button3 from './components/buttons/Button3'
 import Button4 from './components/buttons/Button4'
 import GoBackBtnLight from './components/buttons/GoBackBtnLight'
 import GoBackBtnDark from './components/buttons/GoBackBtnDark'
-import { CaretLeft, CaretUp } from 'phosphor-react'
+import { CaretLeft, CaretUp, Plus } from 'phosphor-react'
 import Head from 'next/head'
-import { Typography, Stack } from '@mui/material'
+import { Typography } from '@mui/material'
 import ButtonStyles from '../styles/Buttons.module.scss'
 import CategoryButton from './components/buttons/CategoryButton'
+import DropDownMenu from './components/DropDownMenu'
 const Home: NextPage = () => {
+  const startIcon = <Plus size={14} weight="bold" />
   return (
     <>
       <Head>
@@ -19,7 +21,9 @@ const Home: NextPage = () => {
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;600;700&display=swap" rel="stylesheet" />
       </Head>
+      <PrimaryButton variant='contained' disableElevation disableRipple startIcon={startIcon}>Add Feedback</PrimaryButton>
       <PrimaryButton variant='contained' disableElevation disableRipple>Button 1</PrimaryButton>
+
       <SecondaryButton variant='contained' disableElevation disableRipple>Button 2</SecondaryButton>
       <Button3 variant='contained' disableElevation disableRipple>Button 3</Button3>
       <Button4 variant='contained' disableElevation disableRipple>Button 4</Button4>
@@ -43,6 +47,7 @@ const Home: NextPage = () => {
         </div>
         <CategoryButton variant='contained' disableElevation disableRipple>UX</CategoryButton>
         <CategoryButton variant='contained' disableElevation disableRipple>Enhancement</CategoryButton>
+        <DropDownMenu />
     </>
 
   )
