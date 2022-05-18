@@ -13,6 +13,7 @@ import CategoryButton from './components/buttons/CategoryButton'
 import DropDownMenu from './components/DropDownMenu'
 const Home: NextPage = () => {
   const startIcon = <Plus size={14} weight="bold" />
+  let dummyMenuItems = ['Most Upvotes', 'Least Upvotes', 'Most Comments', 'Least Comments'];
   return (
     <>
       <Head>
@@ -47,7 +48,7 @@ const Home: NextPage = () => {
         </div>
         <CategoryButton variant='contained' disableElevation disableRipple>UX</CategoryButton>
         <CategoryButton variant='contained' disableElevation disableRipple>Enhancement</CategoryButton>
-        <DropDownMenu />
+        <DropDownMenu menuItems={dummyMenuItems}/>
     </>
 
   )

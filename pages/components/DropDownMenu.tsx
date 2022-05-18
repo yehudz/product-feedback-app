@@ -9,6 +9,10 @@ import { Button, Typography } from '@mui/material';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { Check } from 'phosphor-react';
 
+interface DropDownMenuProps {
+  menuItems: string[]
+}
+
 const StyledListbox = styled('div')(
   ({ theme }) => `
   margin: 20px 0;
@@ -84,7 +88,7 @@ function MenuSection({ children }: MenuSectionProps) {
   );
 }
 
-export default function DropDownMenu() {
+export default function DropDownMenu({ menuItems}: DropDownMenuProps) {
   const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(null);
   const isOpen = Boolean(anchorEl);
   const buttonRef = React.useRef<HTMLButtonElement>(null);
@@ -147,18 +151,15 @@ export default function DropDownMenu() {
         componentsProps={{ listbox: { id: 'simple-menu' } }}
       >
         <MenuSection>
-          <StyledMenuItem onClick={createHandleMenuClick('Most Upvotes')} className="dropdownMenuItem">
-            Most Upvotes {selectedMenuOption === 'Most Upvotes' && <div className='check'><Check size={18} weight="bold" color="#AD1FEA"/></div>}
-          </StyledMenuItem>
-          <StyledMenuItem onClick={createHandleMenuClick('Least Upvotes')} className="dropdownMenuItem">
-            Least Upvotes {selectedMenuOption === 'Least Upvotes' && <div className='check'><Check size={18} weight="bold" color="#AD1FEA"/></div>}
-          </StyledMenuItem>
-          <StyledMenuItem onClick={createHandleMenuClick('Most Comments')} className="dropdownMenuItem">
-            Most Comments {selectedMenuOption === 'Most Comments' && <div className='check'><Check size={18} weight="bold" color="#AD1FEA"/></div>}
-          </StyledMenuItem>
-          <StyledMenuItem onClick={createHandleMenuClick('Least Comments')} className="dropdownMenuItem">
-            Least Comments {selectedMenuOption === 'Least Comments' && <div className='check'><Check size={18} weight="bold" color="#AD1FEA"/></div>}
-          </StyledMenuItem>
+          {menuItems.map((menuItem: string)=> (
+            <StyledMenuItem 
+              key={menuItem}
+              onClick={createHandleMenuClick(menuItem)}
+              className="dropdownMenuItem"
+            >
+              {menuItem} {selectedMenuOption === menuItem && <Check size={18} weight="bold" className='check' color="#AD1FEA"/>}
+            </StyledMenuItem>
+          ))}
         </MenuSection>
       </MenuUnstyled>
     </div>
