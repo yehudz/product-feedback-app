@@ -11,6 +11,7 @@ import { Check } from 'phosphor-react';
 
 interface DropDownMenuProps {
   menuItems: string[]
+  sortDropdown: boolean
 }
 
 const StyledListbox = styled('div')(
@@ -68,6 +69,25 @@ const TriggerButton = styled(Button)(
   })
 )
 
+const FeatureTriggerButton = styled(Button)(
+  ({ theme }) => ({
+    display: 'flex',
+    justifyContent: 'space-between',
+    height: '48px',
+    width: '255px',
+    fontSize: '14px',
+    padding: '0 20px',
+    backgroundColor: theme.palette.info.main,
+    color: theme.palette.success.main,
+    textTransform: 'none',
+    borderRadius: '10px',
+    '&:hover': {
+      backgroundColor: theme.palette.info.main
+    }
+  })
+)
+
+
 const Popper = styled(PopperUnstyled)`
   z-index: 1;
 `;
@@ -88,12 +108,12 @@ function MenuSection({ children }: MenuSectionProps) {
   );
 }
 
-export default function DropDownMenu({ menuItems}: DropDownMenuProps) {
+export default function DropDownMenu({ menuItems, sortDropdown}: DropDownMenuProps) {
   const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(null);
   const isOpen = Boolean(anchorEl);
   const buttonRef = React.useRef<HTMLButtonElement>(null);
   const menuActions = React.useRef<MenuUnstyledActions>(null);
-  const [selectedMenuOption, setSelectedMenuOption] = React.useState<string>('Most Upvotes')
+  const [selectedMenuOption, setSelectedMenuOption] = React.useState<string>('')
   const handleButtonClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     if (isOpen) {
       setAnchorEl(null);
@@ -129,9 +149,9 @@ export default function DropDownMenu({ menuItems}: DropDownMenuProps) {
     };
   };
 
-  return (
-    <div>
-      <TriggerButton
+  const TriggerButtons = ()=> {
+    if (sortDropdown) {
+      return (<TriggerButton
         type="button"
         onClick={handleButtonClick}
         onKeyDown={handleButtonKeyDown}
@@ -141,7 +161,49 @@ export default function DropDownMenu({ menuItems}: DropDownMenuProps) {
         aria-haspopup="menu"
       >
         <Typography variant='body2'>Sort by:</Typography>&nbsp;<Typography variant="h4">{selectedMenuOption}</Typography><KeyboardArrowDownIcon />
-      </TriggerButton>
+      </TriggerButton>)
+    } else {
+      return (<FeatureTriggerButton
+          type="button"
+          onClick={handleButtonClick}
+          onKeyDown={handleButtonKeyDown}
+          ref={buttonRef}
+          aria-controls={isOpen ? 'wrapped-menu' : undefined}
+          aria-expanded={isOpen || undefined}
+          aria-haspopup="menu"
+        >
+          <Typography variant="body1">{selectedMenuOption}</Typography><KeyboardArrowDownIcon />
+        </FeatureTriggerButton>)
+    }
+  }
+  React.useEffect(()=> {
+    setSelectedMenuOption(menuItems[0])
+  }, [])
+  return (
+    <div>
+      {sortDropdown ? <TriggerButton
+        type="button"
+        onClick={handleButtonClick}
+        onKeyDown={handleButtonKeyDown}
+        ref={buttonRef}
+        aria-controls={isOpen ? 'wrapped-menu' : undefined}
+        aria-expanded={isOpen || undefined}
+        aria-haspopup="menu"
+      >
+        <Typography variant='body2'>Sort by:</Typography>&nbsp;<Typography variant="h4">{selectedMenuOption}</Typography><KeyboardArrowDownIcon />
+      </TriggerButton> : 
+      <FeatureTriggerButton
+        type="button"
+        onClick={handleButtonClick}
+        onKeyDown={handleButtonKeyDown}
+        ref={buttonRef}
+        aria-controls={isOpen ? 'wrapped-menu' : undefined}
+        aria-expanded={isOpen || undefined}
+        aria-haspopup="menu"
+      >
+        <Typography variant="body1">{selectedMenuOption}</Typography><KeyboardArrowDownIcon />
+      </FeatureTriggerButton>
+      }
       <MenuUnstyled
         actions={menuActions}
         open={isOpen}

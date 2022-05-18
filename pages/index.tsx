@@ -14,6 +14,8 @@ import DropDownMenu from './components/DropDownMenu'
 const Home: NextPage = () => {
   const startIcon = <Plus size={14} weight="bold" />
   let dummyMenuItems = ['Most Upvotes', 'Least Upvotes', 'Most Comments', 'Least Comments'];
+  let featureMenuItems = ['Feature', 'UI', 'UX', 'Enhancement', 'Bug'];
+  let statusMenuItems = ['Suggestion', 'Planned', 'In-Progress', 'Live'];
   return (
     <>
       <Head>
@@ -48,7 +50,9 @@ const Home: NextPage = () => {
         </div>
         <CategoryButton variant='contained' disableElevation disableRipple>UX</CategoryButton>
         <CategoryButton variant='contained' disableElevation disableRipple>Enhancement</CategoryButton>
-        <DropDownMenu menuItems={dummyMenuItems}/>
+        <DropDownMenu menuItems={dummyMenuItems} sortDropdown={true}/>
+        <DropDownMenu menuItems={featureMenuItems} sortDropdown={false}/>
+        <DropDownMenu menuItems={statusMenuItems} sortDropdown={false}/>
     </>
 
   )
