@@ -12,6 +12,7 @@ import { Check } from 'phosphor-react';
 interface DropDownMenuProps {
   menuItems: string[]
   sortDropdown: boolean
+  mobile: boolean
 }
 
 const StyledListbox = styled('div')(
@@ -52,14 +53,15 @@ const StyledMenuItem = styled(MenuItemUnstyled)(
   }
   `,
 );
+let mobileView: boolean 
 
 const TriggerButton = styled(Button)(
   ({ theme }) => ({
-    height: '72px',
+    height: mobileView ? '56px' : '72px',
     width: '194px',
     fontSize: '14px',
     padding: 0,
-    backgroundColor: theme.palette.success.main,
+    backgroundColor: theme.palette.success.dark,
     color: theme.palette.info.main,
     textTransform: 'none',
     borderRadius: '10px',
@@ -87,7 +89,6 @@ const FeatureTriggerButton = styled(Button)(
   })
 )
 
-
 const Popper = styled(PopperUnstyled)`
   z-index: 1;
 `;
@@ -108,7 +109,7 @@ function MenuSection({ children }: MenuSectionProps) {
   );
 }
 
-export default function DropDownMenu({ menuItems, sortDropdown}: DropDownMenuProps) {
+export default function DropDownMenu({ menuItems, sortDropdown, mobile}: DropDownMenuProps) {
   const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(null);
   const isOpen = Boolean(anchorEl);
   const buttonRef = React.useRef<HTMLButtonElement>(null);
@@ -149,36 +150,11 @@ export default function DropDownMenu({ menuItems, sortDropdown}: DropDownMenuPro
     };
   };
 
-  const TriggerButtons = ()=> {
-    if (sortDropdown) {
-      return (<TriggerButton
-        type="button"
-        onClick={handleButtonClick}
-        onKeyDown={handleButtonKeyDown}
-        ref={buttonRef}
-        aria-controls={isOpen ? 'wrapped-menu' : undefined}
-        aria-expanded={isOpen || undefined}
-        aria-haspopup="menu"
-      >
-        <Typography variant='body2'>Sort by:</Typography>&nbsp;<Typography variant="h4">{selectedMenuOption}</Typography><KeyboardArrowDownIcon />
-      </TriggerButton>)
-    } else {
-      return (<FeatureTriggerButton
-          type="button"
-          onClick={handleButtonClick}
-          onKeyDown={handleButtonKeyDown}
-          ref={buttonRef}
-          aria-controls={isOpen ? 'wrapped-menu' : undefined}
-          aria-expanded={isOpen || undefined}
-          aria-haspopup="menu"
-        >
-          <Typography variant="body1">{selectedMenuOption}</Typography><KeyboardArrowDownIcon />
-        </FeatureTriggerButton>)
-    }
-  }
   React.useEffect(()=> {
+    if (mobile) mobileView = true
     setSelectedMenuOption(menuItems[0])
   }, [])
+  
   return (
     <div>
       {sortDropdown ? <TriggerButton
