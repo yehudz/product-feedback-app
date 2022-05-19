@@ -20,6 +20,18 @@
   &:hover {
     background-color: #CFD7FF;
   }
+  img {
+    margin-bottom: 8px;
+  }
+  @media screen and (max-width: 726px) {
+    flex-direction: row;
+    width: 69px;
+    height: 32px;
+    img {
+      margin-bottom: 0px;
+      margin-right: 8px;
+    }
+  }
 }
 
 .active {

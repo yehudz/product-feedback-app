@@ -1,0 +1,36 @@
+.container {
+  display: grid;
+  grid-template-columns: .5fr 1fr .5fr;
+  margin: 24px;
+  border-radius: 10px;
+  background-color: #fff;
+  padding: 24px;
+  grid-gap: 16px;
+
+  .contentArea {
+    grid-column-start: 1;
+    grid-column-end: 3;
+  }
+
+  .upVoteButton {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 2;
+  }
+
+  .commentsContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    grid-row-start: 2;
+    grid-column-start: 3;
+    img {
+      margin-right: 8px;
+    }
+  }
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
