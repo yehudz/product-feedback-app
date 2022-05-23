@@ -25,7 +25,7 @@ export const InputField = ({setValue}: TextFieldProps)=> {
       sx={{height: '44px', borderRadius: '5px', backgroundColor: "#F7F8FD"}} 
       size="small"
       error={error}
-      helperText={error ? "Fields cannot be empty." : ""}
+      helperText={error ? "Cant't be empty." : ""}
       onBlur={checkForValidation}
       onChange={handleChange}
     />
