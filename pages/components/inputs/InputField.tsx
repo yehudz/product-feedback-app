@@ -5,7 +5,7 @@ interface TextFieldProps {
 import { TextField } from "@mui/material"
 import React, { useState, useRef } from "react"
 
-export const InputField = ({textInputValue, setValue}: TextFieldProps)=> {
+export const InputField = ({setValue}: TextFieldProps)=> {
   let input = useRef<HTMLInputElement>(null)
   const [error, setError] = useState<boolean>()
 
