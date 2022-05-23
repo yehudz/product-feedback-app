@@ -15,7 +15,12 @@ export const InputField = ({setValue}: TextFieldProps)=> {
   }
 
   function handleChange(e: React.ChangeEvent) {
-    setValue((e.target as HTMLInputElement).value)
+    let value = (e.target as HTMLInputElement).value
+    if (!value) setError(true)
+    else {
+      setError(false)
+      setValue(value)
+    }
   }
   return(
     <TextField 
