@@ -14,6 +14,7 @@ export const CreateFeedbackContainer = ()=> {
   const categoryLabel = 'Choose a category for your feedback'
   const detail = 'Feedback Detail'
   const detailLabel = 'Include any specify comments on what should be improved, added, etc.'
+  const menuItems = ['Feature', 'UI', 'UX', 'Enhancement', 'Bug']
   return(
     <>
       <Link href="/">
@@ -29,6 +30,7 @@ export const CreateFeedbackContainer = ()=> {
           categoryLabel={categoryLabel}
           detail={detail}
           detailLabel={detailLabel}
+          menuItems={menuItems}
         />
       </Grid>
     </>

@@ -35,4 +35,5 @@ export interface CardProps {
   categoryLabel: string
   detail: string
   detailLabel: string
+  menuItems: string[]
 }

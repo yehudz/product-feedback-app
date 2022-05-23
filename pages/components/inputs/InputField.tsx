@@ -1,5 +1,6 @@
 interface TextFieldProps {
   setValue: (value: string)=> string | void
+  multiLine: boolean
 }
 
 import { TextField } from "@mui/material"
@@ -9,14 +10,13 @@ import React, { useState, useRef } from "react"
 const useStyles = makeStyles(() => ({
   noBorder: {
     borderColor: "transparent",
-    borderWidth: '1px !important'
+    borderWidth: '1px !important',
   }
 }));
 
-export const InputField = ({setValue}: TextFieldProps)=> {
+export const InputField = ({setValue, multiLine}: TextFieldProps)=> {
   let input = useRef<HTMLInputElement>(null)
   const [error, setError] = useState<boolean>()
-  const [noBorder, setNoBorder] = useState(false)
   const classes = useStyles();
 
   function checkForValidation() {
@@ -38,7 +38,13 @@ export const InputField = ({setValue}: TextFieldProps)=> {
       inputRef={input}
       color="secondary" 
       fullWidth={true}
-      sx={{height: '44px', borderRadius: '5px', backgroundColor: "#F7F8FD", marginTop: 1}} 
+      sx={{
+        height: '44px', 
+        borderRadius: '5px', 
+        backgroundColor: "#F7F8FD", 
+        marginTop: 1,
+        height: '100%'
+      }} 
       size="small"
       error={error}
       helperText={error ? "Cant't be empty." : ""}
@@ -47,6 +53,8 @@ export const InputField = ({setValue}: TextFieldProps)=> {
       InputProps={{
         classes:{notchedOutline:classes.noBorder}
       }}
+      multiline={multiLine ? true : false}
+      minRows={6}
     />
   )
 }

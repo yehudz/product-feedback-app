@@ -76,9 +76,11 @@ const FeatureTriggerButton = styled(Button)(
     display: 'flex',
     justifyContent: 'space-between',
     height: '48px',
-    width: '255px',
+    minWidth: '255px',
+    width: '100%',
     fontSize: '14px',
     padding: '0 20px',
+    marginTop: '16px',
     backgroundColor: theme.palette.info.main,
     color: theme.palette.success.main,
     textTransform: 'none',
@@ -187,6 +189,7 @@ export default function DropDownMenu({ menuItems, sortDropdown, mobile}: DropDow
         anchorEl={anchorEl}
         components={{ Root: Popper, Listbox: StyledListbox }}
         componentsProps={{ listbox: { id: 'simple-menu' } }}
+        sx={{width: '80%'}}
       >
         <MenuSection>
           {menuItems.map((menuItem: string)=> (
