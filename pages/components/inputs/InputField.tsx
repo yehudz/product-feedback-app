@@ -22,7 +22,7 @@ export const InputField = ({textInputValue, setValue}: TextFieldProps)=> {
       inputRef={input}
       color="secondary" 
       fullWidth={true}
-      sx={{height: '44px', borderRadius: '5px'}} 
+      sx={{height: '44px', borderRadius: '5px', backgroundColor: "#F7F8FD"}} 
       size="small"
       error={error}
       helperText={error ? "Fields cannot be empty." : ""}
