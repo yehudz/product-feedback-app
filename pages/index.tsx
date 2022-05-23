@@ -5,10 +5,9 @@ import Head from 'next/head'
 // Server imports
 import { GetStaticProps } from 'next'
 // React component imports
-import {MobileTopBarContainer} from './components/MobileTopBar/MobileTopBarContainer'
+import { MobileTopBarContainer } from './components/MobileTopBar/MobileTopBarContainer'
 import { FeedbackView } from './views/FeedbackView/FeedbackView'
 import { PrismaClient } from '@prisma/client'
-import { InputField } from './components/inputs/InputField'
 import { useState } from 'react'
 
 const Home: NextPage = ({requests}: any) => {
@@ -17,14 +16,9 @@ const Home: NextPage = ({requests}: any) => {
     <>
       <Head>
         <title>Product Feedback</title>
-        <link rel="shortcut icon" href="/favicon.png" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" />
-        <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;600;700&display=swap" rel="stylesheet" />
       </Head>
       <MobileTopBarContainer />
       <FeedbackView requests={requests}/>
-      <InputField setValue={setValue}/>
     </>
   )
 }

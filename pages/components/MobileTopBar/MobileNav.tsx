@@ -7,8 +7,8 @@ export const MobileNav = ()=> {
       <Typography variant="body2" fontWeight={'bold'} color="info.main">Frontend Mentor</Typography>
       <Typography variant="subtitle1" fontWeight={'regular'} color="info.dark">Feedback Board</Typography>
     </Box>
-    <IconButton disableRipple sx={{padding: 0}}>
-      <MenuOutlinedIcon color="info" sx={{fontSize: '28px'}}/>
-    </IconButton>
+      <IconButton disableRipple sx={{padding: 0}} href='/createNewFeedback'>
+        <MenuOutlinedIcon color="info" sx={{fontSize: '28px'}}/>
+      </IconButton>
   </div>
 }
