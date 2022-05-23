@@ -36,4 +36,5 @@ export interface CardProps {
   detail: string
   detailLabel: string
   menuItems: string[]
+  setValue: (value: string)=> void
 }

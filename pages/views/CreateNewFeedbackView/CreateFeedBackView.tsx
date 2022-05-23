@@ -3,9 +3,12 @@ import CardContainer from "../../components/Card/CardContainer"
 import Link from "next/link"
 import GoBackBtnLight from "../../components/buttons/GoBackBtnLight"
 import { CaretLeft } from "phosphor-react"
+import { useState } from "react"
 
 
 export const CreateFeedbackContainer = ()=> {
+  const [value, setValue] = useState<string>()
+
   const icon = 'assets/shared/icon-new-feedback.svg'
   const text = 'Create New Feedback'
   const title = 'Feedback Title'
@@ -31,6 +34,7 @@ export const CreateFeedbackContainer = ()=> {
           detail={detail}
           detailLabel={detailLabel}
           menuItems={menuItems}
+          setValue={setValue}
         />
       </Grid>
     </>

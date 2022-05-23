@@ -23,9 +23,9 @@ const CardContainer = (
     categoryLabel,
     detail,
     detailLabel,
-    menuItems
+    menuItems,
+    setValue
   }: CardProps)=> {
-    const [value, setValue] = useState<string>()
   return (
     <CardWrapper elevation={0} sx={{overflow: 'visible'}}>
       <CardContent sx={{paddingTop: 6, position: 'relative'}}>
