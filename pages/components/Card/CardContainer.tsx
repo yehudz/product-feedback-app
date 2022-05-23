@@ -1,8 +1,10 @@
 import { styled } from '@mui/material/styles';
-import { Card, CardContent, CardHeader, Typography, Box } from "@mui/material"
+import { Card, CardContent, CardHeader, Typography, Box, Stack } from "@mui/material"
 import { CardProps } from '../../../typings/common.types';
 import { InputField } from '../inputs/InputField';
 import DropDownMenu from '../DropDownMenu';
+import PrimaryButton from '../buttons/PrimaryButton';
+import Button3 from '../buttons/Button3'
 import { useState } from 'react';
 const CardWrapper = styled(Card)(({ theme }) => ({
  backgroundColor: '#fff',
@@ -50,6 +52,10 @@ const CardContainer = (
           <Typography variant='body2' color="success.main" fontSize={13} gutterBottom>{detailLabel}</Typography>
           <InputField setValue={setValue} multiLine={true}/>
         </Box>
+        <Stack p={2} gap={2}>
+          <PrimaryButton fullWidth={true}>Add Feedback</PrimaryButton>
+          <Button3 fullWidth={true}>Cancel</Button3>
+        </Stack>
       </CardContent>
     </CardWrapper>
   )
