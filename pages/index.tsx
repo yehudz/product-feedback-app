@@ -4,13 +4,15 @@ import Head from 'next/head'
 
 // Server imports
 import { GetStaticProps } from 'next'
-import {server} from '../config'
 // React component imports
 import {MobileTopBarContainer} from './components/MobileTopBar/MobileTopBarContainer'
 import { FeedbackView } from './views/FeedbackView/FeedbackView'
 import { PrismaClient } from '@prisma/client'
+import { InputField } from './components/inputs/InputField'
+import { useState } from 'react'
 
 const Home: NextPage = ({requests}: any) => {
+  const [value, setValue] = useState<string | undefined>()
   return (
     <>
       <Head>
@@ -22,6 +24,7 @@ const Home: NextPage = ({requests}: any) => {
       </Head>
       <MobileTopBarContainer />
       <FeedbackView requests={requests}/>
+      <InputField setValue={setValue}/>
     </>
   )
 }
