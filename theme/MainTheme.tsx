@@ -38,7 +38,7 @@ const theme = createTheme({
     body2: {
       fontSize: '15px',
       lineHeight: '22px',
-      fontWeight: 'regular'
+      fontWeight: '100'
     },
     subtitle1: {
       fontSize: '13px',

@@ -3,11 +3,21 @@ interface TextFieldProps {
 }
 
 import { TextField } from "@mui/material"
+import {makeStyles} from '@mui/styles'
 import React, { useState, useRef } from "react"
+
+const useStyles = makeStyles(() => ({
+  noBorder: {
+    borderColor: "transparent",
+    borderWidth: '1px !important'
+  }
+}));
 
 export const InputField = ({setValue}: TextFieldProps)=> {
   let input = useRef<HTMLInputElement>(null)
   const [error, setError] = useState<boolean>()
+  const [noBorder, setNoBorder] = useState(false)
+  const classes = useStyles();
 
   function checkForValidation() {
     if (!input.current?.value) setError(true)
@@ -24,15 +34,19 @@ export const InputField = ({setValue}: TextFieldProps)=> {
   }
   return(
     <TextField 
+      variant="outlined"
       inputRef={input}
       color="secondary" 
       fullWidth={true}
-      sx={{height: '44px', borderRadius: '5px', backgroundColor: "#F7F8FD"}} 
+      sx={{height: '44px', borderRadius: '5px', backgroundColor: "#F7F8FD", marginTop: 1}} 
       size="small"
       error={error}
       helperText={error ? "Cant't be empty." : ""}
       onBlur={checkForValidation}
       onChange={handleChange}
+      InputProps={{
+        classes:{notchedOutline:classes.noBorder}
+      }}
     />
   )
 }

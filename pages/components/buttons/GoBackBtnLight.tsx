@@ -9,7 +9,7 @@ const GoBackBtnLight = styled(Button)(({ theme }) => ({
   color: theme.palette.success.main,
   borderRadius: '10px',
   textTransform: 'none',
-  backgroundColor: theme.palette.info.light,
+  backgroundColor: 'transparent',
   '&:hover': {
     backgroundColor: 'transparent',
     textDecoration: 'underline',

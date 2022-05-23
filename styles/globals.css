@@ -14,3 +14,9 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.topIcon {
+  position: absolute;
+  top: -26px;
+  left: 25px;
+}

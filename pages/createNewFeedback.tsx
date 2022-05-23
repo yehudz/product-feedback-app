@@ -1,8 +1,12 @@
-import { Typography } from "@mui/material"
+import { Box} from "@mui/material"
+import { CreateFeedbackContainer } from "./views/CreateNewFeedbackView/CreateFeedBackView"
+
 
 const CreateNewFeedbackView = ()=> {
   return(
-    <Typography variant="h1">Create New Feedback</Typography>
+    <Box mt={3}>
+      <CreateFeedbackContainer />
+    </Box>
   )
 }
 

@@ -25,3 +25,14 @@ export interface Requests {
     current: User;
     productRequests: Request[];
 }
+
+export interface CardProps {
+  icon: string
+  text: string
+  title: string
+  titleLabel: string
+  category: string
+  categoryLabel: string
+  detail: string
+  detailLabel: string
+}
