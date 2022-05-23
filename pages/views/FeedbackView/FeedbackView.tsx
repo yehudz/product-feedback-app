@@ -1,15 +1,15 @@
-import {ProductRequests} from '../../../typings/common.types'
+import {Requests} from '../../../typings/common.types'
 import {Request} from '../../../typings/common.types'
 import { FeedbackCard } from './FeedbackCard'
 interface FeedbackViewProps {
-  requests: ProductRequests
+  requests: Requests
 }
 
 export const FeedbackView = ({requests}: FeedbackViewProps)=> {
   return(
     <>
       {
-        requests.productRequests.map((request: Request)=> (
+        requests.map((request: Request)=> (
           <FeedbackCard key={request.id} request={request}/>
         ))
       }

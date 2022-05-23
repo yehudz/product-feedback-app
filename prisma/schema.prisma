@@ -1,0 +1,50 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model User {
+  id String @default(uuid()) @id
+  image String
+  name String
+  username String
+  comment Comment? @relation(fields: [commentId], references: [id])
+  commentId Int?
+  reply Reply? @relation(fields: [replyId], references: [id])
+  replyId Int?
+}
+
+model Comment {
+  content String
+  id          Int @id @default(autoincrement())
+  request   Request? @relation(fields: [requestId], references: [id])
+  requestId Int?
+  user User[]
+  replies Reply[]
+}
+
+model Reply {
+  id Int @id @default(autoincrement())
+  content String
+  replyingTo String
+  comment Comment? @relation(fields: [commentId], references: [id])
+  commentId Int?
+  user User[]
+}
+
+model Request {
+  category String
+  comments Comment[]
+  description String
+  id Int @id @default(autoincrement())
+  status String
+  title String
+  upvotes Int
+}

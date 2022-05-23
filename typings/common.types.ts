@@ -8,11 +8,12 @@ export type Comment = {
   content: string;
   id: number;
   user: User;
+  replies?: string[]
 }
 
 export type Request = {
   category: string;
-  comments: Comment[];
+  comments?: Comment[];
   description: string;
   id: number;
   status: string;
@@ -20,7 +21,7 @@ export type Request = {
   upvotes: number
 }
 
-export interface ProductRequests {
+export interface Requests {
     current: User;
     productRequests: Request[];
 }

@@ -1,16 +1,16 @@
 // Next imports
 import type { NextPage } from 'next'
 import Head from 'next/head'
-// Types imports
-import { ProductRequests } from '../typings/common.types'
+
 // Server imports
 import { GetStaticProps } from 'next'
 import {server} from '../config'
 // React component imports
 import {MobileTopBarContainer} from './components/MobileTopBar/MobileTopBarContainer'
 import { FeedbackView } from './views/FeedbackView/FeedbackView'
+import { PrismaClient } from '@prisma/client'
 
-const Home: NextPage<ProductRequests> = ({requests}: ProductRequests) => {
+const Home: NextPage = ({requests}: any) => {
   return (
     <>
       <Head>
@@ -26,10 +26,15 @@ const Home: NextPage<ProductRequests> = ({requests}: ProductRequests) => {
   )
 }
 
-export const getStaticProps: GetStaticProps = async ()=> {
-  const res = await fetch(`${server}/api/productRequests`);
-  const requests: ProductRequests = await res.json();
+const prisma = new PrismaClient()
 
+export const getStaticProps: GetStaticProps = async ()=> {
+  
+  const requests = await prisma.request.findMany({
+    include: {
+      comments: true
+    }
+  })
   return {
     props: {
       requests
