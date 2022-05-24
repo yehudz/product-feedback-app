@@ -13,6 +13,7 @@ interface DropDownMenuProps {
   menuItems: string[]
   sortDropdown: boolean
   mobile: boolean
+  setCategorySelection: (categorySelection: string)=> void
 }
 
 const StyledListbox = styled('div')(
@@ -99,7 +100,7 @@ interface MenuSectionProps {
   children: React.ReactNode;
 }
 
-const MenuSectionRoot = styled('li')`
+const MenuSectionRoot = styled('div')`
   list-style: none;
 `;
 
@@ -111,7 +112,7 @@ function MenuSection({ children }: MenuSectionProps) {
   );
 }
 
-export default function DropDownMenu({ menuItems, sortDropdown, mobile}: DropDownMenuProps) {
+export default function DropDownMenu({ menuItems, sortDropdown, mobile, setCategorySelection}: DropDownMenuProps) {
   const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(null);
   const isOpen = Boolean(anchorEl);
   const buttonRef = React.useRef<HTMLButtonElement>(null);
@@ -147,6 +148,7 @@ export default function DropDownMenu({ menuItems, sortDropdown, mobile}: DropDow
       });
       // TO DO: Add menu item selection and sorting for items
       (e.target as Element).classList.add('active')
+      setCategorySelection(optionName)
       setSelectedMenuOption(optionName)
       close();
     };

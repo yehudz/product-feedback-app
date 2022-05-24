@@ -32,7 +32,7 @@ CREATE TABLE "Request" (
     "category" TEXT NOT NULL,
     "description" TEXT NOT NULL,
     "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-    "status" TEXT NOT NULL,
+    "status" TEXT,
     "title" TEXT NOT NULL,
-    "upvotes" INTEGER NOT NULL
+    "upvotes" INTEGER
 );

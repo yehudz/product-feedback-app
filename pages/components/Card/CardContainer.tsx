@@ -5,7 +5,6 @@ import { InputField } from '../inputs/InputField';
 import DropDownMenu from '../DropDownMenu';
 import PrimaryButton from '../buttons/PrimaryButton';
 import Button3 from '../buttons/Button3'
-import { useState } from 'react';
 const CardWrapper = styled(Card)(({ theme }) => ({
  backgroundColor: '#fff',
  width: '90%',
@@ -24,7 +23,10 @@ const CardContainer = (
     detail,
     detailLabel,
     menuItems,
-    setValue
+    setFeedbackTitle,
+    setCategorySelection,
+    setMessage,
+    saveFeedbackApiCall
   }: CardProps)=> {
   return (
     <CardWrapper elevation={0} sx={{overflow: 'visible'}}>
@@ -40,20 +42,20 @@ const CardContainer = (
         <Box p={2}>
           <Typography variant='subtitle1' color='success.main' gutterBottom>{title}</Typography>
           <Typography variant='body2' color="success.main" fontSize={13} gutterBottom>{titleLabel}</Typography>
-          <InputField setValue={setValue} multiLine={false}/>
+          <InputField setValue={setFeedbackTitle} multiLine={false}/>
         </Box>
         <Box p={2}>
           <Typography variant='subtitle1' color='success.main' gutterBottom>{category}</Typography>
           <Typography variant='body2' color="success.main" fontSize={13} gutterBottom>{categoryLabel}</Typography>
-          <DropDownMenu menuItems={menuItems} mobile={true} sortDropdown={false}/>
+          <DropDownMenu menuItems={menuItems} mobile={true} sortDropdown={false} setCategorySelection={setCategorySelection}/>
         </Box>
         <Box p={2}>
           <Typography variant='subtitle1' color='success.main' gutterBottom>{detail}</Typography>
           <Typography variant='body2' color="success.main" fontSize={13} gutterBottom>{detailLabel}</Typography>
-          <InputField setValue={setValue} multiLine={true}/>
+          <InputField setValue={setMessage} multiLine={true}/>
         </Box>
         <Stack p={2} gap={2}>
-          <PrimaryButton fullWidth={true}>Add Feedback</PrimaryButton>
+          <PrimaryButton fullWidth={true} onClick={async ()=> await saveFeedbackApiCall()}>Add Feedback</PrimaryButton>
           <Button3 fullWidth={true}>Cancel</Button3>
         </Stack>
       </CardContent>

@@ -3,11 +3,28 @@ import CardContainer from "../../components/Card/CardContainer"
 import Link from "next/link"
 import GoBackBtnLight from "../../components/buttons/GoBackBtnLight"
 import { CaretLeft } from "phosphor-react"
-import { useState } from "react"
-
+import { useEffect, useState } from "react"
+import { PrismaClient } from "@prisma/client"
 
 export const CreateFeedbackContainer = ()=> {
-  const [value, setValue] = useState<string>()
+  const [feedbackTitle, setFeedbackTitle] = useState<string>()
+  const [categorySelection, setCategorySelection] = useState<string>()
+  const [message, setMessage] = useState<string>()
+
+  let params = {
+    title: feedbackTitle,
+    category: categorySelection,
+    description: message,
+    status: '',
+    upvotes: 0
+  }
+
+  async function saveFeedbackApiCall() {
+   await fetch('http://localhost:3000/api/createRequest', {
+     body: JSON.stringify(params),
+     method: 'POST'
+   })
+  }
 
   const icon = 'assets/shared/icon-new-feedback.svg'
   const text = 'Create New Feedback'
@@ -34,7 +51,10 @@ export const CreateFeedbackContainer = ()=> {
           detail={detail}
           detailLabel={detailLabel}
           menuItems={menuItems}
-          setValue={setValue}
+          setFeedbackTitle={setFeedbackTitle}
+          setCategorySelection={setCategorySelection}
+          setMessage={setMessage}
+          saveFeedbackApiCall={saveFeedbackApiCall}
         />
       </Grid>
     </>

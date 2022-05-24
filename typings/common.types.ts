@@ -36,5 +36,8 @@ export interface CardProps {
   detail: string
   detailLabel: string
   menuItems: string[]
-  setValue: (value: string)=> void
+  setFeedbackTitle: (feedbackTitle: string)=> void
+  setCategorySelection: (categorySelection: string)=> void
+  setMessage: (message: string)=> void
+  saveFeedbackApiCall: ()=> void
 }

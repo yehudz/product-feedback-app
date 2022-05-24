@@ -44,7 +44,7 @@ model Request {
   comments Comment[]
   description String
   id Int @id @default(autoincrement())
-  status String
+  status String?
   title String
-  upvotes Int
+  upvotes Int?
 }
