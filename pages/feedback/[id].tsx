@@ -11,6 +11,8 @@ const prisma = new PrismaClient()
 const Feedback = ({request}: Request)=> {
   const [value, setValue] = useState<string>('')
   const [characterCount, setCharacterCount] = useState<number>(250)
+
+  // Handles the characters left on the UI
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'Backspace') {
       if (characterCount === 250) return
