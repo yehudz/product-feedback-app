@@ -20,10 +20,11 @@ export const CreateFeedbackContainer = ()=> {
   }
 
   async function saveFeedbackApiCall() {
-   await fetch('http://localhost:3000/api/createRequest', {
+   const res = await fetch('http://localhost:3000/api/createRequest', {
      body: JSON.stringify(params),
      method: 'POST'
    })
+   if (res) window.location.assign('/')
   }
 
   const icon = 'assets/shared/icon-new-feedback.svg'
