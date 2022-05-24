@@ -8,6 +8,7 @@ const SecondaryButton = styled(Button)(({ theme }) => ({
   fontWeight: 'bold',
   fontSize: '14px',
   textTransform: 'none',
+  color: '#fff',
   backgroundColor: theme.palette.secondary.main,
   '&:hover': {
     backgroundColor: '#7C91F9',

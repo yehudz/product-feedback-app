@@ -19,6 +19,7 @@ export interface Request {
   status: string;
   title: string;
   upvotes: number
+  request: any
 }
 
 export interface Requests {

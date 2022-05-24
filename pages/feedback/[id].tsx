@@ -1,16 +1,19 @@
 import { PrismaClient } from '@prisma/client'
 import { GetStaticProps } from 'next'
+import { FeedbackCard } from '../views/FeedbackView/FeedbackCard'
+import { FeedbackViewTopBar } from '../views/FeedbackView/FeedbackViewTopBar'
 
 import {Request} from '../../typings/common.types'
+import { Box } from '@mui/material'
 
 const prisma = new PrismaClient()
-const Feedback = ({title, category, description, status, comments, upvotes}: Request)=> {
-  console.log(title)
-
+const Feedback = ({request}: Request)=> {
 
   return (
-    <>
-    </>
+    <Box mt={2}>
+      <FeedbackViewTopBar />
+      <FeedbackCard request={request} />
+    </Box>
   )
 }
 
@@ -40,7 +43,7 @@ export const getStaticProps: GetStaticProps = async ({params})=> {
     }
   })
   return {
-    props: request
+    props: {request}
   }
 }
 

@@ -18,7 +18,8 @@ export const FeedbackCard = ({request}: FeedbackCardProps)=> {
         <Link href={`/feedback/${request.id}`}>
           <Typography 
             variant='h4' 
-            color="success.main" 
+            color="success.main"
+            sx={{cursor: 'pointer'}} 
             gutterBottom>
               {request.title}
           </Typography>
@@ -36,7 +37,7 @@ export const FeedbackCard = ({request}: FeedbackCardProps)=> {
       </div>
       <div className={FeedbackCardStyles.upVoteButton}>
         <div className={ButtonStyles.upVoteButton}>
-          <img src='assets/shared/icon-arrow-up.svg' />
+          <img src='/assets/shared/icon-arrow-up.svg' />
           {request.upvotes}
         </div>
       </div>
