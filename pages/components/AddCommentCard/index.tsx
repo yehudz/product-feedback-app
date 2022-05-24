@@ -5,9 +5,11 @@ import PrimaryButton from "../buttons/PrimaryButton"
 
 interface AddCommentCardProps {
   setValue: (value: string)=> void
+  characterCount?: number
+  handleKeyDown?: (event: any)=> void
 }
 
-export const AddCommentCard = ({setValue}: AddCommentCardProps)=> {
+export const AddCommentCard = ({setValue, characterCount, handleKeyDown}: AddCommentCardProps)=> {
   return(
     <CardWrapper elevation={0} sx={{margin: '0 auto'}}>
       <CardContent>
@@ -18,6 +20,7 @@ export const AddCommentCard = ({setValue}: AddCommentCardProps)=> {
             setValue={setValue} 
             placeholder="Type your comment here"
             isComment={true}
+            handleKeyDown={handleKeyDown}
           />
         </Box>
         <Stack 
@@ -28,7 +31,7 @@ export const AddCommentCard = ({setValue}: AddCommentCardProps)=> {
           alignItems={'center'} 
           justifyContent="space-between"
         >
-          <Typography variant="body1" color="success.main">250 Charaters left</Typography>
+          <Typography variant="body1" color="success.main">{characterCount} Charaters left</Typography>
           <PrimaryButton>Post Comment</PrimaryButton>
         </Stack>
       </CardContent>

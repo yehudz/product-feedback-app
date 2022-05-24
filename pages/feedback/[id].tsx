@@ -5,16 +5,37 @@ import { FeedbackViewTopBar } from '../views/FeedbackView/FeedbackViewTopBar'
 import { AddCommentCard } from '../components/AddCommentCard'
 import {Request} from '../../typings/common.types'
 import { Box } from '@mui/material'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 const prisma = new PrismaClient()
 const Feedback = ({request}: Request)=> {
   const [value, setValue] = useState<string>('')
+  const [characterCount, setCharacterCount] = useState<number>(250)
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Backspace') {
+      if (characterCount === 250) return
+      setCharacterCount(characterCount + 1)
+      } else {
+        if (characterCount === 0) return
+        setCharacterCount(characterCount - 1)
+      }
+  };
+
+  useEffect(()=> {
+    if (!value.length) {
+      setCharacterCount(250)
+      return
+    }
+  }, [value])
   return (
     <Box mt={2}>
       <FeedbackViewTopBar />
       <FeedbackCard request={request} />
-      <AddCommentCard setValue={setValue}/>
+      <AddCommentCard 
+        setValue={setValue} 
+        characterCount={characterCount} 
+        handleKeyDown={handleKeyDown}
+      />
     </Box>
   )
 }

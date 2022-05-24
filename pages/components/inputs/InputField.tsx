@@ -3,6 +3,7 @@ interface TextFieldProps {
   multiLine: boolean
   placeholder?: string
   isComment?: boolean
+  handleKeyDown?: (event: any)=> void
 }
 
 import { TextField } from "@mui/material"
@@ -16,7 +17,7 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
-export const InputField = ({setValue, multiLine, placeholder, isComment}: TextFieldProps)=> {
+export const InputField = ({setValue, multiLine, placeholder, isComment, handleKeyDown}: TextFieldProps)=> {
   let input = useRef<HTMLInputElement>(null)
   const [error, setError] = useState<boolean>()
   const classes = useStyles();
@@ -28,7 +29,10 @@ export const InputField = ({setValue, multiLine, placeholder, isComment}: TextFi
 
   function handleChange(e: React.ChangeEvent) {
     let value = (e.target as HTMLInputElement).value
-    if (!value) setError(true)
+    if (!value) {
+      setError(true)
+      setValue(value)
+    }
     else {
       setError(false)
       setValue(value)
@@ -52,8 +56,12 @@ export const InputField = ({setValue, multiLine, placeholder, isComment}: TextFi
       helperText={error ? "Cant't be empty." : ""}
       onBlur={checkForValidation}
       onChange={handleChange}
+      onKeyDown={handleKeyDown}
       InputProps={{
-        classes:{notchedOutline:classes.noBorder}
+        classes:{notchedOutline:classes.noBorder},
+      }}
+      inputProps={{
+        maxLength: 250
       }}
       multiline={multiLine ? true : false}
       minRows={isComment ? 3 : 6}
