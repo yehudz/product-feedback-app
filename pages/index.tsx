@@ -3,7 +3,7 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 
 // Server imports
-import { GetServerSideProps } from 'next'
+import { GetStaticProps } from 'next'
 // React component imports
 import { MobileTopBarContainer } from './components/MobileTopBar/MobileTopBarContainer'
 import { FeedbackView } from './views/FeedbackView/FeedbackView'
@@ -23,9 +23,13 @@ const Home: NextPage = ({requests}: any) => {
 
 const prisma = new PrismaClient()
 
-export const getServerSideProps: GetServerSideProps = async ()=> {
+export const getStaticProps: GetStaticProps = async ()=> {
   
-  const requests = await prisma.request.findMany()
+  const requests = await prisma.request.findMany({
+    include: {
+      comments: true
+    }
+  })
   return {
     props: {
       requests

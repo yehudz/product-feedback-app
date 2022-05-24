@@ -9,7 +9,7 @@ export const FeedbackView = ({requests}: FeedbackViewProps)=> {
   return(
     <>
       {
-        requests.map((request: Request)=> (
+        requests.reverse().map((request: Request)=> (
           <FeedbackCard key={request.id} request={request}/>
         ))
       }
