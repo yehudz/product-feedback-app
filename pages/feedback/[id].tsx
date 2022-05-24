@@ -2,17 +2,19 @@ import { PrismaClient } from '@prisma/client'
 import { GetStaticProps } from 'next'
 import { FeedbackCard } from '../views/FeedbackView/FeedbackCard'
 import { FeedbackViewTopBar } from '../views/FeedbackView/FeedbackViewTopBar'
-
+import { AddCommentCard } from '../components/AddCommentCard'
 import {Request} from '../../typings/common.types'
 import { Box } from '@mui/material'
+import { useState } from 'react'
 
 const prisma = new PrismaClient()
 const Feedback = ({request}: Request)=> {
-
+  const [value, setValue] = useState<string>('')
   return (
     <Box mt={2}>
       <FeedbackViewTopBar />
       <FeedbackCard request={request} />
+      <AddCommentCard setValue={setValue}/>
     </Box>
   )
 }

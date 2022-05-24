@@ -1,6 +1,8 @@
 interface TextFieldProps {
   setValue: (value: string)=> string | void
   multiLine: boolean
+  placeholder?: string
+  isComment?: boolean
 }
 
 import { TextField } from "@mui/material"
@@ -14,7 +16,7 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
-export const InputField = ({setValue, multiLine}: TextFieldProps)=> {
+export const InputField = ({setValue, multiLine, placeholder, isComment}: TextFieldProps)=> {
   let input = useRef<HTMLInputElement>(null)
   const [error, setError] = useState<boolean>()
   const classes = useStyles();
@@ -54,7 +56,8 @@ export const InputField = ({setValue, multiLine}: TextFieldProps)=> {
         classes:{notchedOutline:classes.noBorder}
       }}
       multiline={multiLine ? true : false}
-      minRows={6}
+      minRows={isComment ? 3 : 6}
+      placeholder={placeholder}
     />
   )
 }

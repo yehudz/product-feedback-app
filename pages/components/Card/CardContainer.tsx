@@ -5,7 +5,7 @@ import { InputField } from '../inputs/InputField';
 import DropDownMenu from '../DropDownMenu';
 import PrimaryButton from '../buttons/PrimaryButton';
 import Button3 from '../buttons/Button3'
-const CardWrapper = styled(Card)(({ theme }) => ({
+export const CardWrapper = styled(Card)(({ theme }) => ({
  backgroundColor: '#fff',
  width: '90%',
  minHeight: '200px',
