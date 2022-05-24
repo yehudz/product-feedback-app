@@ -5,6 +5,8 @@ import { Typography } from '@mui/material'
 import CategoryButton from '../../components/buttons/CategoryButton'
 import {CommentsNotification} from '../../components/CommentsNotification'
 
+import Link from 'next/link'
+
 interface FeedbackCardProps {
   request: Request
 }
@@ -13,12 +15,14 @@ export const FeedbackCard = ({request}: FeedbackCardProps)=> {
   return(
     <div className={FeedbackCardStyles.container}>
       <div className={FeedbackCardStyles.contentArea}>
-        <Typography 
-          variant='h4' 
-          color="success.main" 
-          gutterBottom>
-            {request.title}
-        </Typography>
+        <Link href={`/feedback/${request.id}`}>
+          <Typography 
+            variant='h4' 
+            color="success.main" 
+            gutterBottom>
+              {request.title}
+          </Typography>
+        </Link>
         <Typography 
           variant='body2' 
           color="success.main" 

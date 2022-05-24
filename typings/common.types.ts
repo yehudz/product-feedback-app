@@ -11,7 +11,7 @@ export type Comment = {
   replies?: string[]
 }
 
-export type Request = {
+export interface Request {
   category: string;
   comments?: Comment[];
   description: string;
