@@ -5,9 +5,13 @@ import theme from '../theme/MainTheme'
 import Layout from './components/Layout';
 import Head from 'next/head';
 
+import {UserProvider} from './context/userContext'
+
+
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ThemeProvider theme={theme}>
+      
       <Head>
       <link rel="shortcut icon" href="/favicon.png" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -15,7 +19,9 @@ function MyApp({ Component, pageProps }: AppProps) {
         <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;600;700&display=swap" rel="stylesheet" />
       </Head>
       <Layout>
-        <Component {...pageProps} />
+        <UserProvider>
+          <Component {...pageProps} />
+        </UserProvider>
       </Layout>
     </ThemeProvider>
   )

@@ -2,6 +2,8 @@ import { CardWrapper } from "../Card/CardContainer"
 import { Card, CardContent, CardHeader, Typography, Box, Stack } from "@mui/material"
 import { InputField } from "../inputs/InputField"
 import PrimaryButton from "../buttons/PrimaryButton"
+import { userContext } from '../../context/userContext'
+import { useContext } from "react"
 
 interface AddCommentCardProps {
   setValue: (value: string)=> void
@@ -9,7 +11,10 @@ interface AddCommentCardProps {
   handleKeyDown?: (event: any)=> void
 }
 
+
+
 export const AddCommentCard = ({setValue, characterCount, handleKeyDown}: AddCommentCardProps)=> {
+  const {currentUser} = useContext(userContext)
   return(
     <CardWrapper elevation={0} sx={{margin: '0 auto'}}>
       <CardContent>
