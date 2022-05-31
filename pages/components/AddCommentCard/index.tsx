@@ -4,17 +4,39 @@ import { InputField } from "../inputs/InputField"
 import PrimaryButton from "../buttons/PrimaryButton"
 import { userContext } from '../../context/userContext'
 import { useContext } from "react"
-
+import { Request } from '../../../typings/common.types'
 interface AddCommentCardProps {
   setValue: (value: string)=> void
   characterCount?: number
   handleKeyDown?: (event: any)=> void
+  request: Request
+  value: string
 }
 
 
 
-export const AddCommentCard = ({setValue, characterCount, handleKeyDown}: AddCommentCardProps)=> {
+export const AddCommentCard = ({setValue, characterCount, handleKeyDown, request, value}: AddCommentCardProps)=> {
   const {currentUser} = useContext(userContext)
+
+  async function saveComment() {
+
+    try {
+      fetch(`http://localhost:3000/api/addComment/${request.id}`, {
+        method: 'UPDATE',
+        body: {
+          content: value,
+          user: [currentUser]
+        },
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  
   return(
     <CardWrapper elevation={0} sx={{margin: '0 auto'}}>
       <CardContent>
@@ -37,7 +59,7 @@ export const AddCommentCard = ({setValue, characterCount, handleKeyDown}: AddCom
           justifyContent="space-between"
         >
           <Typography variant="body1" color="success.main">{characterCount} Charaters left</Typography>
-          <PrimaryButton>Post Comment</PrimaryButton>
+          <PrimaryButton onClick={saveComment}>Post Comment</PrimaryButton>
         </Stack>
       </CardContent>
     </CardWrapper>

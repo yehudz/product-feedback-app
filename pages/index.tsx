@@ -7,7 +7,7 @@ import { GetStaticProps } from 'next'
 // React component imports
 import { MobileTopBarContainer } from './components/MobileTopBar/MobileTopBarContainer'
 import { FeedbackView } from './views/FeedbackView/FeedbackView'
-import { PrismaClient } from '@prisma/client'
+import prisma from '../db'
 
 const Home: NextPage = ({requests}: any) => {
   return (
@@ -20,8 +20,6 @@ const Home: NextPage = ({requests}: any) => {
     </>
   )
 }
-
-const prisma = new PrismaClient()
 
 export const getStaticProps: GetStaticProps = async ()=> {
   

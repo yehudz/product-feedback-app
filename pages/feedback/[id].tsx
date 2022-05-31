@@ -1,4 +1,3 @@
-import { PrismaClient } from '@prisma/client'
 import { GetStaticProps } from 'next'
 import { FeedbackCard } from '../views/FeedbackView/FeedbackCard'
 import { FeedbackViewTopBar } from '../views/FeedbackView/FeedbackViewTopBar'
@@ -6,8 +5,8 @@ import { AddCommentCard } from '../components/AddCommentCard'
 import {Request} from '../../typings/common.types'
 import { Box } from '@mui/material'
 import { useEffect, useState } from 'react'
+import prisma from '../../db'
 
-const prisma = new PrismaClient()
 const Feedback = ({request}: Request)=> {
   const [value, setValue] = useState<string>('')
   const [characterCount, setCharacterCount] = useState<number>(250)
@@ -37,6 +36,8 @@ const Feedback = ({request}: Request)=> {
         setValue={setValue} 
         characterCount={characterCount} 
         handleKeyDown={handleKeyDown}
+        request={request}
+        value={value}
       />
     </Box>
   )

@@ -4,7 +4,6 @@ import Link from "next/link"
 import GoBackBtnLight from "../../components/buttons/GoBackBtnLight"
 import { CaretLeft } from "phosphor-react"
 import { useEffect, useState } from "react"
-import { PrismaClient } from "@prisma/client"
 
 export const CreateFeedbackContainer = ()=> {
   const [feedbackTitle, setFeedbackTitle] = useState<string>()
