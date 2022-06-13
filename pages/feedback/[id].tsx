@@ -2,8 +2,10 @@ import { GetStaticProps } from 'next'
 import { FeedbackCard } from '../views/FeedbackView/FeedbackCard'
 import { FeedbackViewTopBar } from '../views/FeedbackView/FeedbackViewTopBar'
 import { AddCommentCard } from '../components/AddCommentCard'
-import {Request} from '../../typings/common.types'
-import { Box } from '@mui/material'
+import { CommentCard } from '../components/CommentCard/CommentCard'
+import CommentStyles from '../../styles/Comment.module.scss'
+import {Request, Comment, User} from '../../typings/common.types'
+import { Box, Typography } from '@mui/material'
 import { useEffect, useState } from 'react'
 import prisma from '../../db'
 
@@ -28,10 +30,35 @@ const Feedback = ({request}: Request)=> {
       return
     }
   }, [value])
+  
   return (
     <Box mt={2}>
       <FeedbackViewTopBar />
       <FeedbackCard request={request} />
+      {request.comments.length ? <div className={CommentStyles.container}>
+        <Typography 
+          variant='h3' 
+          color="success.main" 
+          pt={3} 
+          pl={3}
+        >
+          {request.comments.length} {request.comments.length === 1 ? 'Comment' : 'Comments'}
+        </Typography>
+        {request?.comments.map((comment: Comment)=> {
+          const user: User = comment.user[0]
+          return(
+            <CommentCard 
+              key={comment.id}
+              username={user.username}
+              userImage={user.image}
+              name={user.name}
+              comment={comment.content}
+
+            />
+            )
+        })}
+      </div> : null}
+      
       <AddCommentCard 
         setValue={setValue} 
         characterCount={characterCount} 
@@ -44,11 +71,7 @@ const Feedback = ({request}: Request)=> {
 }
 
 export const getStaticPaths = async ()=> {
-  const res = await prisma.request.findMany({
-    include: {
-      comments: true
-    }
-  })
+  const res = await prisma.request.findMany()
   const paths = res.map(feedback=> {
     return {
       params: {id: feedback.id.toString()}
@@ -66,7 +89,14 @@ export const getStaticProps: GetStaticProps = async ({params})=> {
   const request = await prisma.request.findUnique({
     where: {
       id: parseInt(id)
-    }
+    },
+    include: {
+      comments: {
+        include: {
+          user: true
+        }
+      },
+    },
   })
   return {
     props: {request}

@@ -8,6 +8,7 @@ export type Comment = {
   content: string;
   id: number;
   user: User;
+  username: string
   replies?: string[]
 }
 

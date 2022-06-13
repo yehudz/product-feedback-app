@@ -5,16 +5,22 @@ import PrimaryButton from "../buttons/PrimaryButton"
 import { userContext } from '../../context/userContext'
 import { useContext } from "react"
 import { Request } from '../../../typings/common.types'
+import { useRouter } from 'next/router'
 interface AddCommentCardProps {
   setValue: (value: string)=> void
   characterCount?: number
   handleKeyDown?: (event: any)=> void
   request: Request
-  value: string
+  value: string,
 }
 
 export const AddCommentCard = ({setValue, characterCount, handleKeyDown, request, value}: AddCommentCardProps)=> {
   const {currentUser} = useContext(userContext)
+  const router = useRouter()
+
+  const refreshData = ()=> {
+    router.replace(router.asPath)
+  }
   let commentParams = {
     requestId: request.id,
     content: value,
@@ -22,11 +28,12 @@ export const AddCommentCard = ({setValue, characterCount, handleKeyDown, request
   }
   async function saveComment() {
     try {
-      const res = await fetch(`http://localhost:3000/api/addComment`, {
+      await fetch(`http://localhost:3000/api/addComment`, {
         method: 'POST',
         body: JSON.stringify(commentParams)
+      }).then(()=> {
+        refreshData()
       })
-      if (res.ok) alert('Comment Added')
     } catch (error) {
       console.log(error)
     }

@@ -1,0 +1,47 @@
+@use './variables.scss';
+
+.container {
+  background-color: #fff;
+  margin: 24px;
+  padding-bottom: 1px;
+  border-radius: 10px;
+  .wrapper {
+    display: grid;
+    grid-template-columns: .25fr 1fr .25fr;
+    grid-template-rows: 1fr 1fr;
+    padding-top: 12px;
+    margin: 24px;
+    border-bottom: 2px solid rgba(#979797, .1);
+    .image {
+      grid-column-start: 1;
+      grid-column-end: 2;
+      height: 40px;
+      width: 40px;
+      border-radius: 50%;
+      overflow: hidden;
+      img {
+        width: 100%;
+      }
+    }
+    .userDetails {
+      grid-column-start: 2;
+      grid-column-end: 3;
+      margin-bottom: 12px;
+      .name {
+        font-weight: 700;
+      }
+      .username {
+        font-weight: 100;
+      }
+    }
+    .comment {
+      align-self: center;
+      grid-column-start: 1;
+      grid-column-end: 3;
+    }
+  }:last-child {
+    border-bottom: none;
+  }
+}
+
+
