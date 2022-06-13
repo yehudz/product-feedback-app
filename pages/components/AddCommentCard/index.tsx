@@ -13,24 +13,20 @@ interface AddCommentCardProps {
   value: string
 }
 
-
-
 export const AddCommentCard = ({setValue, characterCount, handleKeyDown, request, value}: AddCommentCardProps)=> {
   const {currentUser} = useContext(userContext)
-
+  let commentParams = {
+    requestId: request.id,
+    content: value,
+    user: currentUser
+  }
   async function saveComment() {
-
     try {
-      fetch(`http://localhost:3000/api/addComment/${request.id}`, {
-        method: 'UPDATE',
-        body: {
-          content: value,
-          user: [currentUser]
-        },
-        headers: {
-          'Content-Type': 'application/json'
-        }
+      const res = await fetch(`http://localhost:3000/api/addComment`, {
+        method: 'POST',
+        body: JSON.stringify(commentParams)
       })
+      if (res.ok) alert('Comment Added')
     } catch (error) {
       console.log(error)
     }
