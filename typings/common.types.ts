@@ -21,6 +21,7 @@ export interface Request {
   title: string;
   upvotes: number
   request: any
+  liked: boolean
 }
 
 export interface Requests {

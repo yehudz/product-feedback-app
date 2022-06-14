@@ -47,4 +47,5 @@ model Request {
   status String?
   title String
   upvotes Int?
+  liked Boolean?
 }
