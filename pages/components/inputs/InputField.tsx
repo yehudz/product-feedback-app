@@ -45,11 +45,10 @@ export const InputField = ({setValue, multiLine, placeholder, isComment, handleK
       color="secondary" 
       fullWidth={true}
       sx={{
-        height: '44px', 
         borderRadius: '5px', 
         backgroundColor: "#F7F8FD", 
         marginTop: 1,
-        height: '100%'
+        // height: '100%'
       }} 
       size="small"
       error={error}

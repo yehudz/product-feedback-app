@@ -1,8 +1,10 @@
 import { GetStaticProps } from 'next'
+import dynamic from "next/dynamic";
 import { FeedbackCard } from '../views/FeedbackView/FeedbackCard'
 import { FeedbackViewTopBar } from '../views/FeedbackView/FeedbackViewTopBar'
 import { AddCommentCard } from '../components/AddCommentCard'
-import { CommentCard } from '../components/CommentCard/CommentCard'
+import React, {Suspense} from 'react'
+const  CommentCard = dynamic(()=> import('../components/CommentCard/CommentCard'), { ssr: false }) 
 import CommentStyles from '../../styles/Comment.module.scss'
 import {Request, Comment, User} from '../../typings/common.types'
 import { Box, Typography } from '@mui/material'
@@ -30,7 +32,6 @@ const Feedback = ({request}: Request)=> {
       return
     }
   }, [value])
-  
   return (
     <Box mt={2}>
       <FeedbackViewTopBar />
@@ -44,19 +45,23 @@ const Feedback = ({request}: Request)=> {
         >
           {request.comments.length} {request.comments.length === 1 ? 'Comment' : 'Comments'}
         </Typography>
+        <Suspense>
         {request?.comments.map((comment: Comment)=> {
           const user: User = comment.user[0]
           return(
-            <CommentCard 
-              key={comment.id}
-              username={user.username}
-              userImage={user.image}
-              name={user.name}
-              comment={comment.content}
-
-            />
+            
+              <CommentCard 
+                key={comment.id}
+                username={user.username}
+                userImage={user.image}
+                name={user.name}
+                comment={comment.content}
+                commentId={comment.id}
+                replies={comment.replies}
+              />
+            
             )
-        })}
+        })}</Suspense>
       </div> : null}
       
       <AddCommentCard 
@@ -93,7 +98,8 @@ export const getStaticProps: GetStaticProps = async ({params})=> {
     include: {
       comments: {
         include: {
-          user: true
+          user: true,
+          replies: true
         }
       },
     },

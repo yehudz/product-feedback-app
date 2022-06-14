@@ -27,7 +27,7 @@ model Comment {
   request   Request? @relation(fields: [requestId], references: [id])
   requestId Int?
   user User[]
-  replies Reply?
+  replies Reply[]
 }
 
 model Reply {
