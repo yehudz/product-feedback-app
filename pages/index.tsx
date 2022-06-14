@@ -1,3 +1,5 @@
+import React, {Suspense, useContext} from 'react'
+
 // Next imports
 import type { NextPage } from 'next'
 import Head from 'next/head'
@@ -7,15 +9,20 @@ import { GetServerSideProps } from 'next'
 // React component imports
 import { MobileTopBarContainer } from './components/MobileTopBar/MobileTopBarContainer'
 import { FeedbackView } from './views/FeedbackView/FeedbackView'
+import { appContext } from './context/appContext'
+const MobileNavMenu = React.lazy(()=> import('./components/MobileNavMenu/MobileNavMenu'));
 import prisma from '../db'
-
 const Home: NextPage = ({requests}: any) => {
+  const {mobileMenuVisibility} = useContext(appContext)
   return (
     <>
       <Head>
         <title>Product Feedback</title>
       </Head>
       <MobileTopBarContainer />
+      {mobileMenuVisibility && <Suspense fallback={<h1>Loading</h1>}>
+        <MobileNavMenu />
+      </Suspense>}
       <FeedbackView requests={requests}/>
     </>
   )

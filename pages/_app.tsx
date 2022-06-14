@@ -6,23 +6,26 @@ import Layout from './components/Layout';
 import Head from 'next/head';
 
 import {UserProvider} from './context/userContext'
-
+import {appContext} from './context/appContext';
+import { useState } from 'react';
 
 function MyApp({ Component, pageProps }: AppProps) {
+  const [mobileMenuVisibility, setMobileMenuVisibility] = useState<boolean>(false)
   return (
     <ThemeProvider theme={theme}>
-      
       <Head>
       <link rel="shortcut icon" href="/favicon.png" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;600;700&display=swap" rel="stylesheet" />
       </Head>
-      <Layout>
-        <UserProvider>
-          <Component {...pageProps} />
-        </UserProvider>
-      </Layout>
+      <appContext.Provider value={{mobileMenuVisibility, setMobileMenuVisibility}}>
+        <Layout>
+          <UserProvider>
+            <Component {...pageProps} />
+          </UserProvider>
+        </Layout>
+      </appContext.Provider>
     </ThemeProvider>
   )
 }
