@@ -14,6 +14,7 @@ interface DropDownMenuProps {
   sortDropdown: boolean
   mobile: boolean
   setCategorySelection: (categorySelection: string)=> void
+  savedCategoryOption?: string
 }
 
 const StyledListbox = styled('div')(
@@ -112,12 +113,12 @@ function MenuSection({ children }: MenuSectionProps) {
   );
 }
 
-export default function DropDownMenu({ menuItems, sortDropdown, mobile, setCategorySelection}: DropDownMenuProps) {
+export default function DropDownMenu({ menuItems, sortDropdown, mobile, setCategorySelection, savedCategoryOption}: DropDownMenuProps) {
   const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(null);
   const isOpen = Boolean(anchorEl);
   const buttonRef = React.useRef<HTMLButtonElement>(null);
   const menuActions = React.useRef<MenuUnstyledActions>(null);
-  const [selectedMenuOption, setSelectedMenuOption] = React.useState<string>('')
+  const [selectedMenuOption, setSelectedMenuOption] = React.useState<string>(savedCategoryOption ? savedCategoryOption : '')
   const handleButtonClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     if (isOpen) {
       setAnchorEl(null);
@@ -156,7 +157,7 @@ export default function DropDownMenu({ menuItems, sortDropdown, mobile, setCateg
 
   React.useEffect(()=> {
     if (mobile) mobileView = true
-    setSelectedMenuOption(menuItems[0])
+    if (!savedCategoryOption) setSelectedMenuOption(menuItems[0])
   }, [])
   
   return (

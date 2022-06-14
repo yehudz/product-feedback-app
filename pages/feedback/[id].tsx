@@ -34,7 +34,7 @@ const Feedback = ({request}: Request)=> {
   }, [value])
   return (
     <Box mt={2}>
-      <FeedbackViewTopBar />
+      <FeedbackViewTopBar request={request}/>
       <FeedbackCard request={request} />
       {request.comments.length ? <div className={CommentStyles.container}>
         <Typography 

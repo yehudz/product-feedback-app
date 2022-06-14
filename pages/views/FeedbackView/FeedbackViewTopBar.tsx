@@ -2,8 +2,9 @@ import { Stack } from "@mui/material"
 import GoBackBtnLight from "../../components/buttons/GoBackBtnLight"
 import SecondaryButton from "../../components/buttons/SecondayButton"
 import { CaretLeft } from "phosphor-react"
+import { Request } from '../../../typings/common.types'
 import Link from "next/link"
-export const FeedbackViewTopBar = ()=> {
+export const FeedbackViewTopBar = ({request}: Request)=> {
   return(
     <Stack 
       flexDirection={'row'} 
@@ -15,7 +16,9 @@ export const FeedbackViewTopBar = ()=> {
       <Link href="/">
         <GoBackBtnLight startIcon={<CaretLeft size={16}/>}>Go Back</GoBackBtnLight>
       </Link>
-      <SecondaryButton>Edit Feedback</SecondaryButton>
+      <Link href={`/editFeedback/${request.id}`}>
+        <SecondaryButton>Edit Feedback</SecondaryButton>
+      </Link>
     </Stack>
   )
 }

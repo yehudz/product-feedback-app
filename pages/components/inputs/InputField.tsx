@@ -4,6 +4,7 @@ interface TextFieldProps {
   placeholder?: string
   isComment?: boolean
   handleKeyDown?: (event: any)=> void
+  defaultValue?: string
 }
 
 import { TextField } from "@mui/material"
@@ -17,7 +18,7 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
-export const InputField = ({setValue, multiLine, placeholder, isComment, handleKeyDown}: TextFieldProps)=> {
+export const InputField = ({setValue, multiLine, placeholder, isComment, handleKeyDown, defaultValue}: TextFieldProps)=> {
   let input = useRef<HTMLInputElement>(null)
   const [error, setError] = useState<boolean>()
   const classes = useStyles();
@@ -65,6 +66,7 @@ export const InputField = ({setValue, multiLine, placeholder, isComment, handleK
       multiline={multiLine ? true : false}
       minRows={isComment ? 3 : 6}
       placeholder={placeholder}
+      defaultValue={defaultValue}
     />
   )
 }

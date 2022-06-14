@@ -42,4 +42,8 @@ export interface CardProps {
   setCategorySelection: (categorySelection: string)=> void
   setMessage: (message: string)=> void
   saveFeedbackApiCall: ()=> void
+  request?: Request
+  isEdit: boolean
+  statusMenuItems: string[]
+  setStatus: (status: string)=> void
 }
