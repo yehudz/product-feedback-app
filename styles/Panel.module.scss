@@ -5,3 +5,16 @@
   padding: 24px;
   margin: 26px;
 }
+
+.roadmapList {
+  display: grid;
+  grid-template-columns: .15fr 1fr .3fr;
+  align-items: center;
+  width: 100%;
+  gap: 8px;
+  .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+  }
+}
