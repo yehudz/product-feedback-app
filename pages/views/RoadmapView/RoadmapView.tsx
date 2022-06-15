@@ -1,10 +1,11 @@
+import React from "react"
 import { RoadmapViewTopBar } from "./RoadmapViewTopbar"
-
+const RoadmapMobileView = React.lazy(()=> import('./RoadmapMobileView'))
 const RoadmapView = ()=> {
   return(
     <>
       <RoadmapViewTopBar />
-      <h1>Roadmap view</h1>
+      <RoadmapMobileView />
     </>
   )
 }
