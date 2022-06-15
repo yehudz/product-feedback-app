@@ -16,7 +16,11 @@ export const MobileNav = ()=> {
       <Typography variant="subtitle1" fontWeight={'regular'} color="info.dark">Feedback Board</Typography>
     </Box>
       <IconButton sx={{padding: 0}} onClick={handleMobileMenuVisibility}>
-        <MenuOutlinedIcon color="info" sx={{fontSize: '28px'}}/>
+        {!mobileMenuVisibility ? 
+          <img src="assets/shared/mobile/icon-hamburger.svg" alt="" /> :
+          <img src="assets/shared/mobile/icon-close.svg" alt="" />
+        }
+        
       </IconButton>
   </div>
 }
