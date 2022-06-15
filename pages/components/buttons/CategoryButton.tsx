@@ -3,9 +3,10 @@ import Button from '@mui/material/Button';
 
 const CategoryButton = styled(Button)(({ theme }) => ({
   height: '30px',
-  minWidth: '48px',
+  minWidth: '24px',
   fontWeight: '600',
   fontSize: '13px',
+  padding: '0 15px',
   borderRadius: '10px',
   color: "#4661E6",
   textTransform: 'none',

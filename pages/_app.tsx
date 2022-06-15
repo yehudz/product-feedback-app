@@ -11,6 +11,8 @@ import { useState } from 'react';
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [mobileMenuVisibility, setMobileMenuVisibility] = useState<boolean>(false)
+  const [selectedPanelFilterOption, setSelectedPanelFilterOption] = useState<string>()
+
   return (
     <ThemeProvider theme={theme}>
       <Head>
@@ -19,7 +21,13 @@ function MyApp({ Component, pageProps }: AppProps) {
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;600;700&display=swap" rel="stylesheet" />
       </Head>
-      <appContext.Provider value={{mobileMenuVisibility, setMobileMenuVisibility}}>
+      <appContext.Provider 
+        value={{
+          mobileMenuVisibility, 
+          setMobileMenuVisibility,
+          selectedPanelFilterOption,
+          setSelectedPanelFilterOption
+        }}>
         <Layout>
           <UserProvider>
             <Component {...pageProps} />
