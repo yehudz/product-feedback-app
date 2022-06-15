@@ -1,7 +1,7 @@
 import { Box, Typography, Grid } from '@mui/material';
 import PanelStyles from '../../../styles/Panel.module.scss';
 import GoBackBtnLight from '../buttons/GoBackBtnLight';
-
+import Link from 'next/link';
 export const RoadmapPanel = ()=> {
 
   // Dummy data
@@ -32,21 +32,24 @@ export const RoadmapPanel = ()=> {
         mb={1}
       >
         <Typography variant='h3' color="success.main">Roadmap</Typography>
-        <GoBackBtnLight 
-          sx={
-              {
-                width: '8px', 
-                padding: 0, 
-                justifyContent: 'flex-end', 
-                alignItems: 'flex-start',
-                color: 'secondary.main',
-                fontWeight: '300',
-                textDecoration: 'underline'
-              }
-              }
-            >
-              View
-        </GoBackBtnLight>
+        <Link href={'/roadmap'}>
+          <GoBackBtnLight 
+            disableRipple
+            sx={
+                {
+                  width: '8px', 
+                  padding: 0, 
+                  justifyContent: 'flex-end', 
+                  alignItems: 'flex-start',
+                  color: 'secondary.main',
+                  fontWeight: '300',
+                  textDecoration: 'underline'
+                }
+                }
+              >
+                View
+          </GoBackBtnLight>
+        </Link>
       </Grid>
       <Grid container>
         <div className={PanelStyles.roadmapList}>
