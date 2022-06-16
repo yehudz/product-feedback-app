@@ -29,10 +29,10 @@ interface EditFeedbackViewProps {
 }
 
 export const EditFeedbackView = ({request}: EditFeedbackViewProps)=> {
-  const [feedbackTitle, setFeedbackTitle] = useState<string>()
+  const [feedbackTitle, setFeedbackTitle] = useState<string>(request.title)
   const [categorySelection, setCategorySelection] = useState<string>()
   const [status, setStatus] = useState<string>()
-  const [message, setMessage] = useState<string>()
+  const [message, setMessage] = useState<string>(request.description)
   const [openSnackbar, setOpenSnackbar] = useState<boolean>(false)
   const [validate, setValidate] = useState<boolean>(false)
   const [snackbarMessage, setSnackbarMessage] = useState<string>()
