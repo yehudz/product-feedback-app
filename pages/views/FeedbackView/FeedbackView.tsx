@@ -1,4 +1,3 @@
-import {Requests} from '../../../typings/common.types'
 import {Request} from '../../../typings/common.types'
 import { FeedbackCard } from './FeedbackCard'
 import {appContext} from '../../context/appContext'
@@ -7,7 +6,7 @@ import { useContext, useState } from 'react'
 import Box from '@mui/material/Box';
 import LinearProgress from '@mui/material/LinearProgress';
 interface FeedbackViewProps {
-  requests: Requests
+  requests: Request[]
 }
 
 const FeedbackView = ({requests}: FeedbackViewProps)=> {
@@ -15,7 +14,7 @@ const FeedbackView = ({requests}: FeedbackViewProps)=> {
   const [filterSelection, setFilterSelection] = useState()
   switch(mainMenuFilterOption) {
     case 'Most Upvotes':
-      let filteredByMostUpvotes = requests.sort((a: Request, b: Request)=> {
+      let filteredByMostUpvotes: any = requests.sort((a: Request, b: Request)=> {
         return b?.upvotes - a?.upvotes;
       })
       setTimeout(()=> {
@@ -23,7 +22,7 @@ const FeedbackView = ({requests}: FeedbackViewProps)=> {
       }, 2000)
       break;
     case 'Least Upvotes': 
-      let filteredByLeastUpvotes = requests.sort((a: Request, b: Request)=> {
+      let filteredByLeastUpvotes: any = requests.sort((a: Request, b: Request)=> {
         return a?.upvotes - b?.upvotes;
       })
       setTimeout(()=> {
@@ -31,7 +30,7 @@ const FeedbackView = ({requests}: FeedbackViewProps)=> {
       }, 2000)
       break;
     case 'Most Comments':
-      let filteredByMostComments = requests.sort((a: Request, b: Request)=> {
+      let filteredByMostComments: any = requests.sort((a: Request, b: Request)=> {
         return b.comments.length - a.comments.length;
       })
       setTimeout(()=> {
@@ -39,7 +38,7 @@ const FeedbackView = ({requests}: FeedbackViewProps)=> {
       }, 2000)
       break;
     case 'Least Comments':
-      let filteredByLeastComments = requests.sort((a: Request, b: Request)=> {
+      let filteredByLeastComments: any = requests.sort((a: Request, b: Request)=> {
         return a.comments.length - b.comments.length;
       })
       setTimeout(()=> {
@@ -47,7 +46,7 @@ const FeedbackView = ({requests}: FeedbackViewProps)=> {
       }, 2000)
       break;
     default: 
-      let defaultFilter = requests.sort((a: Request, b: Request)=> {
+      let defaultFilter: any = requests.sort((a: Request, b: Request)=> {
         return b?.upvotes - a?.upvotes;
       })
       setTimeout(()=> {
@@ -56,7 +55,7 @@ const FeedbackView = ({requests}: FeedbackViewProps)=> {
   }
   return(
     <>
-      {filterSelection ? filterSelection?.map((request: Request)=> {
+      {filterSelection ? (filterSelection as Request[]).map((request: Request)=> {
         return(<FeedbackCard key={request.id} request={request}/>)
       }): <Box sx={{ width: '100%' }}>
       <LinearProgress />

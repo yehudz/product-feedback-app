@@ -1,4 +1,4 @@
-import {Request} from '@prisma/client'
+import {Request} from '../../../typings/common.types'
 import FeedbackCardStyles from '../../../styles/FeedbackCard.module.scss'
 import ButtonStyles from '../../../styles/Buttons.module.scss'
 import { Typography } from '@mui/material'
@@ -45,11 +45,11 @@ export const FeedbackCard = ({request, isRoadmap, status}: FeedbackCardProps)=> 
 
   return(
     <div className={FeedbackCardStyles.container}>
-      {isRoadmap && <div className={FeedbackCardStyles.cardTopline} style={{backgroundColor: status.color}}></div>}
+      {isRoadmap && <div className={FeedbackCardStyles.cardTopline} style={{backgroundColor: status?.color}}></div>}
       <div className={FeedbackCardStyles.contentArea}>
         {isRoadmap && <div className={FeedbackCardStyles.statusContainer}>
-            <div className={FeedbackCardStyles.dot} style={{backgroundColor: status.color}}></div>
-            <div className={FeedbackCardStyles.title}>{status.title}</div>
+            <div className={FeedbackCardStyles.dot} style={{backgroundColor: status?.color}}></div>
+            <div className={FeedbackCardStyles.title}>{status?.title}</div>
           </div>
         }
         <Link href={`/feedback/${request.id}`}>

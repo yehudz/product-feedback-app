@@ -14,7 +14,7 @@ import Link from "next/link"
 import GoBackBtnLight from "../../components/buttons/GoBackBtnLight"
 import { CaretLeft } from "phosphor-react"
 import React, { useState } from "react"
-import { Request} from '@prisma/client';
+import { Request} from '../../../typings/common.types';
 import MuiAlert, { AlertProps } from '@mui/material/Alert';
 import { server } from "../../../config"
 const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(

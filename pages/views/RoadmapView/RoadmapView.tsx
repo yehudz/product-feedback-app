@@ -1,6 +1,6 @@
 import React, {Suspense} from "react"
 import { RoadmapViewTopBar } from "./RoadmapViewTopbar"
-import {Request} from '@prisma/client'
+import {Request} from '../../../typings/common.types'
 interface RoadmapViewProps {
   requests: Request[]
 }

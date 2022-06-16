@@ -93,6 +93,7 @@ export const CreateFeedbackContainer = ()=> {
           setCategorySelection={setCategorySelection}
           setMessage={setMessage}
           saveFeedbackApiCall={saveFeedbackApiCall}
+          isEdit={true}
         />
       </Grid>
     </>

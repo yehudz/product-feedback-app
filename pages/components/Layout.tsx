@@ -1,5 +1,8 @@
-import { MobileTopBarContainer } from "./MobileTopBar/MobileTopBarContainer"
-export default function Layout({ children }) {
+interface LayoutProps {
+  children: any
+}
+
+export default function Layout({ children }: LayoutProps) {
   return (
     <>
       <main>{children}</main>

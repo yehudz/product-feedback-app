@@ -4,7 +4,12 @@ import React, {Suspense} from 'react'
 import { useEffect, useState } from 'react'
 import {Request} from '../../typings/common.types'
 import { EditFeedbackView } from '../views/EditFeedbackView/EditFeedbackView'
-const EditFeedback = ({request}: Request)=> {
+
+interface EditFeedbackProps {
+  request: Request
+}
+
+const EditFeedback = ({request}: EditFeedbackProps)=> {
   return(
     <EditFeedbackView request={request}/>
   )
@@ -12,7 +17,7 @@ const EditFeedback = ({request}: Request)=> {
 
 export const getStaticPaths = async ()=> {
   const res = await prisma.request.findMany()
-  const paths = res.map(feedback=> {
+  const paths = res.map((feedback: Request)=> {
     return {
       params: {id: feedback.id.toString()}
     }

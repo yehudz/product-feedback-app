@@ -2,6 +2,7 @@ export type User = {
   image: string;
   name: string;
   username: string
+  0: User
 }
 
 export type Comment = {
@@ -20,7 +21,7 @@ export interface Request {
   status: string;
   title: string;
   upvotes: number
-  request: any
+  request?: Request
   liked: boolean
 }
 
@@ -44,8 +45,8 @@ export interface CardProps {
   setMessage: (message: string)=> string | void
   saveFeedbackApiCall: ()=> void
   request?: Request
-  isEdit: boolean
-  statusMenuItems: string[]
-  setStatus: (status: string)=> void
-  showDeleteWarning: ()=> void
+  isEdit?: boolean
+  statusMenuItems?: string[]
+  setStatus?: (status: string)=> void
+  showDeleteWarning?: ()=> void
 }

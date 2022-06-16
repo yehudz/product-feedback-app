@@ -5,7 +5,7 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 
 import {makeStyles} from '@mui/styles'
-import {Request} from '@prisma/client'
+import {Request} from '../../../typings/common.types'
 import { FeedbackCard } from '../FeedbackView/FeedbackCard';
 interface RoadmapViewProps {
   requests: Request[]
@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
       fontWeight: 700
     },
     '& .MuiTab-textColorInherit': {
-      color: theme.palette.success.main,
+      color: "#3A4374",
       fontWeight: 700
     },
     '& .MuiTabs-indicator': {
@@ -101,7 +101,7 @@ export default function RoadmapMobileView({requests}: RoadmapViewProps) {
             color: '#F49F85'
           }
           return(
-            <FeedbackCard request={item} isRoadmap={true} status={statusParams}/>
+            <FeedbackCard key={item.id} request={item} isRoadmap={true} status={statusParams}/>
           )
         })}
       </TabPanel>
@@ -112,7 +112,7 @@ export default function RoadmapMobileView({requests}: RoadmapViewProps) {
             color: '#AD1FEA'
           }
           return(
-            <FeedbackCard request={item} isRoadmap={true} status={statusParams}/>
+            <FeedbackCard key={item.id} request={item} isRoadmap={true} status={statusParams}/>
           )
         })}
       </TabPanel>
@@ -123,7 +123,7 @@ export default function RoadmapMobileView({requests}: RoadmapViewProps) {
             color: '#AD1FEA'
           }
           return(
-            <FeedbackCard request={item} isRoadmap={true} status={statusParams}/>
+            <FeedbackCard key={item.id} request={item} isRoadmap={true} status={statusParams}/>
           )
         })}
       </TabPanel>

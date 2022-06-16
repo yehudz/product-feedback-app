@@ -12,10 +12,10 @@ import { Check } from 'phosphor-react';
 import {appContext} from '../context/appContext'
 
 interface DropDownMenuProps {
-  menuItems: string[]
+  menuItems: string[] | any
   sortDropdown: boolean
   mobile: boolean
-  setCategorySelection: (categorySelection: string)=> void
+  setCategorySelection?: (categorySelection: string)=> void
   savedCategoryOption?: string
 }
 
@@ -196,7 +196,6 @@ export default function DropDownMenu({ menuItems, sortDropdown, mobile, setCateg
         anchorEl={anchorEl}
         components={{ Root: Popper, Listbox: StyledListbox }}
         componentsProps={{ listbox: { id: 'simple-menu' } }}
-        sx={{width: '80%'}}
       >
         <MenuSection>
           {menuItems.map((menuItem: string)=> (

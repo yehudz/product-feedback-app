@@ -12,7 +12,7 @@ interface CommentCardProps {
   name: string
   comment: string
   commentId: number
-  replies?: Reply[] | null | undefined
+  replies?: Reply[] | any
   isReply? : boolean
 }
 
@@ -57,7 +57,7 @@ const CommentCard = ({
         </Typography>
       {showPostReplyInput && <CommentReplyInput commentId={commentId} replyingTo={username} setShowPostReplyInput={setShowPostReplyInput}/> }
       {replies && <Suspense><div className={CommentStyles.repliesContainer}>
-        {replies.map(reply=> {
+        {replies.map((reply: Reply)=> {
         return(
             <ReplyCard 
               key={reply.id}

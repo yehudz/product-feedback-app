@@ -11,7 +11,11 @@ import { Box, Typography } from '@mui/material'
 import { useEffect, useState } from 'react'
 import prisma from '../../db'
 
-const Feedback = ({request}: Request)=> {
+interface FeedbackProps {
+  request: Request
+}
+
+const Feedback = ({request}: FeedbackProps)=> {
   const [value, setValue] = useState<string>('')
   const [characterCount, setCharacterCount] = useState<number>(250)
 
@@ -77,7 +81,7 @@ const Feedback = ({request}: Request)=> {
 
 export const getStaticPaths = async ()=> {
   const res = await prisma.request.findMany()
-  const paths = res.map(feedback=> {
+  const paths = res.map((feedback: any)=> {
     return {
       params: {id: feedback.id.toString()}
     }
