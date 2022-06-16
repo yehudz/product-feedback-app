@@ -33,7 +33,6 @@ const CardContainer = (
     statusMenuItems,
     setStatus
   }: CardProps)=> {
-    // console.log(request)
   return (
     <CardWrapper elevation={0} sx={{overflow: 'visible'}}>
       <CardContent sx={{paddingTop: 6, position: 'relative'}}>

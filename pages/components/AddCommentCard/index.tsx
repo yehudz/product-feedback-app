@@ -64,7 +64,6 @@ export const AddCommentCard = ({setValue, characterCount, handleKeyDown, request
     }
     else setValidate(true)
   }, [value])
-  console.log(value)
   return(
     <>
       {!validate && <Snackbar

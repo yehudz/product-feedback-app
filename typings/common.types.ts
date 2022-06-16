@@ -39,9 +39,9 @@ export interface CardProps {
   detail: string
   detailLabel: string
   menuItems: string[]
-  setFeedbackTitle: (feedbackTitle: string)=> void
-  setCategorySelection: (categorySelection: string)=> void
-  setMessage: (message: string)=> void
+  setFeedbackTitle: (feedbackTitle: string)=> string | void
+  setCategorySelection: (categorySelection: string)=> string | void
+  setMessage: (message: string)=> string | void
   saveFeedbackApiCall: ()=> void
   request?: Request
   isEdit: boolean
