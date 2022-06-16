@@ -5,12 +5,12 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 
 // Server imports
-import { GetServerSideProps } from 'next'
+import { GetStaticProps } from 'next'
 // React component imports
-import MobileTopBarContainer from './components/MobileTopBar/MobileTopBarContainer';
-const FeedbackView = React.lazy(()=> import('./views/FeedbackView/FeedbackView'))
-import appContext from './context/appContext'
-const MobileNavMenu = React.lazy(()=> import('./components/MobileNavMenu/MobileNavMenu'));
+import MobileTopBarContainer from '../components/MobileTopBar/MobileTopBarContainer';
+const FeedbackView = React.lazy(()=> import('../views/FeedbackView/FeedbackView'))
+import appContext from '../context/appContext'
+const MobileNavMenu = React.lazy(()=> import('../components/MobileNavMenu/MobileNavMenu'));
 import prisma from '../db'
 const Home: NextPage = ({requests}: any) => {
   const {mobileMenuVisibility} = useContext(appContext)
@@ -30,7 +30,7 @@ const Home: NextPage = ({requests}: any) => {
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async ()=> {
+export const getStaticProps: GetStaticProps = async ()=> {
   
   const requests = await prisma.request.findMany({
     include: {

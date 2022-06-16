@@ -1,7 +1,7 @@
 import React from "react"
 import prisma from '../db'
-import { GetServerSideProps } from 'next'
-const RoadmapView = React.lazy(()=> import("./views/RoadmapView/RoadmapView")) 
+import { GetStaticProps } from 'next'
+const RoadmapView = React.lazy(()=> import("../views/RoadmapView/RoadmapView")) 
 
 const Roadmap = ({requests}: any) => {
   return(
@@ -9,7 +9,7 @@ const Roadmap = ({requests}: any) => {
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async ()=> {
+export const getStaticProps: GetStaticProps = async ()=> {
   
   const requests = await prisma.request.findMany({
     include: {

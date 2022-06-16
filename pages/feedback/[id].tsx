@@ -1,10 +1,10 @@
 import { GetStaticProps } from 'next'
 import dynamic from "next/dynamic";
-import FeedbackCard from '../views/FeedbackView/FeedbackCard'
-import FeedbackViewTopBar from '../views/FeedbackView/FeedbackViewTopBar'
-import AddCommentCard from '../components/AddCommentCard'
+import FeedbackCard from '../../views/FeedbackView/FeedbackCard'
+import FeedbackViewTopBar from '../../views/FeedbackView/FeedbackViewTopBar'
+import AddCommentCard from '../../components/AddCommentCard'
 import React, {Suspense} from 'react'
-const  CommentCard = dynamic(()=> import('../components/CommentCard/CommentCard'), { ssr: false }) 
+const  CommentCard = dynamic(()=> import('../../components/CommentCard/CommentCard'), { ssr: false }) 
 import CommentStyles from '../../styles/Comment.module.scss'
 import {Request, Comment, User} from '../../typings/common.types'
 import { Box, Typography } from '@mui/material'

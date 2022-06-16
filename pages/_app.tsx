@@ -2,11 +2,11 @@ import '../styles/globals.css'
 import type { AppProps } from 'next/app'
 import { ThemeProvider } from '@mui/material/styles';
 import theme from '../theme/MainTheme'
-import Layout from './components/Layout';
+import Layout from '../components/Layout';
 import Head from 'next/head';
 
-import {UserProvider} from './context/userContext'
-import appContext from './context/appContext';
+import {UserProvider} from '../context/userContext'
+import appContext from '../context/appContext';
 import { useState } from 'react';
 
 function MyApp({ Component, pageProps }: AppProps) {
