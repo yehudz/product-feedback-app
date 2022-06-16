@@ -47,4 +47,5 @@ export interface CardProps {
   isEdit: boolean
   statusMenuItems: string[]
   setStatus: (status: string)=> void
+  showDeleteWarning: ()=> void
 }

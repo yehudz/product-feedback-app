@@ -1,4 +1,14 @@
-import { Grid, Snackbar } from "@mui/material"
+// MUI imports
+import { 
+    Grid, 
+    Snackbar, 
+    Dialog, 
+    DialogTitle, 
+    DialogContent, 
+    DialogContentText, 
+    Button, 
+    DialogActions 
+  } from "@mui/material"
 import CardContainer from "../../components/Card/CardContainer"
 import Link from "next/link"
 import GoBackBtnLight from "../../components/buttons/GoBackBtnLight"
@@ -26,6 +36,7 @@ export const EditFeedbackView = ({request}: EditFeedbackViewProps)=> {
   const [openSnackbar, setOpenSnackbar] = useState<boolean>(false)
   const [validate, setValidate] = useState<boolean>(false)
   const [snackbarMessage, setSnackbarMessage] = useState<string>()
+  const [openOverlay, setOpenOverlay] = useState<boolean>(false)
 
   let params = {
     id: request.id,
@@ -56,6 +67,34 @@ export const EditFeedbackView = ({request}: EditFeedbackViewProps)=> {
         setOpenSnackbar(true)
       }
     }
+  }
+
+  function showDeleteWarning() {
+    setOpenOverlay(true)
+  }
+
+  async function deleteFeedback() {
+    try {
+      await fetch('http://localhost:3000/api/deleteRequest', {
+        body: JSON.stringify({id: request.id}),
+        method: 'DELETE',
+        headers: {
+          'Content-type': 'application/json'
+        }
+    }).then(()=> {
+      handleCloseOverlay()
+      window.location.assign('/')
+    })
+    } catch (error) {
+      handleCloseOverlay()
+      setSnackbarMessage('Something went wrong, please try again later')
+      setOpenSnackbar(true)
+    }
+    
+  }
+
+  function handleCloseOverlay() {
+    setOpenOverlay(false)
   }
 
   function handleClose() {
@@ -105,8 +144,30 @@ export const EditFeedbackView = ({request}: EditFeedbackViewProps)=> {
           isEdit={true}
           statusMenuItems={statusMenuItems}
           setStatus={setStatus}
+          showDeleteWarning={showDeleteWarning}
         />
       </Grid>
+      <Dialog
+        open={openOverlay}
+        onClose={handleClose}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">
+          {`Are you sure you?`}
+        </DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+            {`You're about to delete '${request.title}'`}
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button sx={{textTransform: 'none'}} color="primary" onClick={handleCloseOverlay}>Cancel</Button>
+          <Button sx={{textTransform: 'none'}} color="secondary" onClick={deleteFeedback} autoFocus>
+            Proceed
+          </Button>
+        </DialogActions>
+      </Dialog>
     </>
       
   )
