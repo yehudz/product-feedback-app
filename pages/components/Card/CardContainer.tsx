@@ -1,7 +1,7 @@
 import { styled } from '@mui/material/styles';
 import { Card, CardContent, CardHeader, Typography, Box, Stack } from "@mui/material"
 import { CardProps } from '../../../typings/common.types';
-import { InputField } from '../inputs/InputField';
+import InputField from '../inputs/InputField';
 import DropDownMenu from '../DropDownMenu';
 import PrimaryButton from '../buttons/PrimaryButton';
 import Button3 from '../buttons/Button3'

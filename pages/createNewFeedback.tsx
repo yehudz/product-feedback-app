@@ -1,5 +1,5 @@
 import { Box} from "@mui/material"
-import { CreateFeedbackContainer } from "./views/CreateNewFeedbackView/CreateFeedBackView"
+import CreateFeedbackContainer from "./views/CreateNewFeedbackView/CreateFeedBackView"
 
 
 const CreateNewFeedbackView = ()=> {

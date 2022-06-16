@@ -1,7 +1,7 @@
-import { MobileNav } from './MobileNav'
-import { MobileOptionsMenu } from './MobileOptionsMenu'
+import MobileNav from './MobileNav'
+import MobileOptionsMenu from './MobileOptionsMenu'
 
-export const MobileTopBarContainer = ()=> {
+const MobileTopBarContainer = ()=> {
   return(
     <>
       <MobileNav />
@@ -9,3 +9,5 @@ export const MobileTopBarContainer = ()=> {
     </>
   )
 }
+
+export default MobileTopBarContainer

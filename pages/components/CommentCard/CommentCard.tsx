@@ -2,7 +2,7 @@ import Button from '../buttons/GoBackBtnLight'
 import React, {Suspense, useEffect, useState} from 'react'
 import CommentStyles from '../../../styles/Comment.module.scss'
 import { Typography } from '@mui/material'
-import { CommentReplyInput } from './CommentReplyInput'
+import CommentReplyInput from './CommentReplyInput'
 import { Reply } from "@prisma/client";
 // import { ReplyCard } from '../ReplyCard/ReplyCard'
 const ReplyCard = React.lazy(() => import('../ReplyCard/ReplyCard'));

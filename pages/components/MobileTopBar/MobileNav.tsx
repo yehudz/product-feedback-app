@@ -1,9 +1,9 @@
 import { Box, Typography, IconButton } from '@mui/material'
 import MobileNavStyles from '../../../styles/MobileNavStyles.module.scss'
 import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
-import {appContext} from '../../context/appContext'
+import appContext from '../../context/appContext'
 import { useContext } from 'react';
-export const MobileNav = ()=> {
+const MobileNav = ()=> {
   const {mobileMenuVisibility, setMobileMenuVisibility} = useContext(appContext)
 
   function handleMobileMenuVisibility() {
@@ -24,3 +24,5 @@ export const MobileNav = ()=> {
       </IconButton>
   </div>
 }
+
+export default MobileNav

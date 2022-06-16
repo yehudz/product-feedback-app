@@ -1,7 +1,7 @@
 import { Stack, Grid } from '@mui/material'
 import { useState } from 'react'
 import PrimaryButton from '../buttons/PrimaryButton'
-import {InputField} from '../inputs/InputField'
+import InputField from '../inputs/InputField'
 import CommentStyles from '../../../styles/Comment.module.scss'
 import { useRouter } from 'next/router'
 import {server} from '../../../config'
@@ -11,7 +11,7 @@ interface CommentReplyInputProp {
   setShowPostReplyInput: any
 }
 
-export const CommentReplyInput = ({commentId, replyingTo, setShowPostReplyInput}: CommentReplyInputProp)=> {
+const CommentReplyInput = ({commentId, replyingTo, setShowPostReplyInput}: CommentReplyInputProp)=> {
   const [value, setValue] = useState<string>()
   const router = useRouter()
   const refreshData = ()=> {
@@ -63,3 +63,5 @@ export const CommentReplyInput = ({commentId, replyingTo, setShowPostReplyInput}
     </Stack>
   )
 }
+
+export default CommentReplyInput

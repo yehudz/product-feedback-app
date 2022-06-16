@@ -1,5 +1,5 @@
 import React, {Suspense} from "react"
-import { RoadmapViewTopBar } from "./RoadmapViewTopbar"
+import RoadmapViewTopBar from "./RoadmapViewTopbar"
 import {Request} from '../../../typings/common.types'
 interface RoadmapViewProps {
   requests: Request[]

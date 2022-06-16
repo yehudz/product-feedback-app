@@ -1,9 +1,9 @@
 import { Grid } from "@mui/material"
 import CategoryButton from "../buttons/CategoryButton"
 import PanelStyles from '../../../styles/Panel.module.scss'
-import { appContext } from "../../context/appContext"
+import appContext from "../../context/appContext"
 import { useContext, useEffect, useState } from "react"
-export const CategoryFiltersPanel = ()=> {
+const CategoryFiltersPanel = ()=> {
   const {selectedPanelFilterOption, setSelectedPanelFilterOption} = useContext(appContext)
   const filtersMenu = [
       {name: 'All', selected: true}, 
@@ -54,3 +54,5 @@ export const CategoryFiltersPanel = ()=> {
     </Grid>
   )
 }
+
+export default CategoryFiltersPanel

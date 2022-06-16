@@ -5,7 +5,7 @@ interface CommentsNotificationProps {
   amount?: number
 }
 
-export const CommentsNotification = ({amount}: CommentsNotificationProps)=> {
+const CommentsNotification = ({amount}: CommentsNotificationProps)=> {
   return (
     <div className={FeedbackCardStyles.commentsContainer}>
       <img src="/assets/shared/icon-comments.svg" alt="" />
@@ -13,3 +13,5 @@ export const CommentsNotification = ({amount}: CommentsNotificationProps)=> {
     </div>
   )
 }
+
+export default CommentsNotification

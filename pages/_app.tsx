@@ -6,7 +6,7 @@ import Layout from './components/Layout';
 import Head from 'next/head';
 
 import {UserProvider} from './context/userContext'
-import {appContext} from './context/appContext';
+import appContext from './context/appContext';
 import { useState } from 'react';
 
 function MyApp({ Component, pageProps }: AppProps) {

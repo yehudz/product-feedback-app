@@ -2,7 +2,7 @@ import MobileNavStyles from '../../../styles/MobileNavStyles.module.scss'
 import DropDownMenu from "../DropDownMenu"
 import PrimaryButton from "../buttons/PrimaryButton"
 import Link from 'next/link'
-export const MobileOptionsMenu = ()=> {
+const MobileOptionsMenu = ()=> {
   const menuItems = ['Most Upvotes', 'Least Upvotes', 'Most Comments', 'Least Comments']
   return (
     <div className={MobileNavStyles.optionsMenuContainer}>
@@ -18,3 +18,5 @@ export const MobileOptionsMenu = ()=> {
     </div>
   )
 }
+
+export default MobileOptionsMenu

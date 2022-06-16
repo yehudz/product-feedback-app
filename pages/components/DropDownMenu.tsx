@@ -9,7 +9,7 @@ import { Button, Typography } from '@mui/material';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { Check } from 'phosphor-react';
 
-import {appContext} from '../context/appContext'
+import appContext from '../context/appContext'
 
 interface DropDownMenuProps {
   menuItems: string[] | any

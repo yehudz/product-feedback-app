@@ -1,6 +1,6 @@
 const { createContext } = require("react");
 
-export const userContext = createContext()
+const userContext = createContext()
 
 export const UserProvider = ({children}) => {
   const currentUser = {
@@ -10,3 +10,5 @@ export const UserProvider = ({children}) => {
   }
   return <userContext.Provider value={{currentUser}}>{children}</userContext.Provider>
 }
+
+export default userContext

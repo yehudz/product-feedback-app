@@ -1,6 +1,6 @@
 import {Request} from '../../../typings/common.types'
-import { FeedbackCard } from './FeedbackCard'
-import {appContext} from '../../context/appContext'
+import FeedbackCard from './FeedbackCard'
+import appContext from '../../context/appContext'
 import { useContext, useState } from 'react'
 
 import Box from '@mui/material/Box';

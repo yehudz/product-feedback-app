@@ -1,7 +1,7 @@
 import Button from '../buttons/GoBackBtnLight'
 import CommentStyles from '../../../styles/Comment.module.scss'
 import { Typography } from '@mui/material'
-import { CommentReplyInput } from '../CommentCard/CommentReplyInput'
+import CommentReplyInput from '../CommentCard/CommentReplyInput'
 import { useState } from 'react'
 
 interface ReplyCardProps {

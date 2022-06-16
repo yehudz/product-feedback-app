@@ -6,7 +6,7 @@ import Box from '@mui/material/Box';
 
 import {makeStyles} from '@mui/styles'
 import {Request} from '../../../typings/common.types'
-import { FeedbackCard } from '../FeedbackView/FeedbackCard';
+import FeedbackCard from '../FeedbackView/FeedbackCard';
 interface RoadmapViewProps {
   requests: Request[]
 }

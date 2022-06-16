@@ -14,7 +14,7 @@ const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
 
-export const CreateFeedbackContainer = ()=> {
+const CreateFeedbackContainer = ()=> {
   const [feedbackTitle, setFeedbackTitle] = useState<string>()
   const [categorySelection, setCategorySelection] = useState<string>()
   const [message, setMessage] = useState<string>()
@@ -100,3 +100,5 @@ export const CreateFeedbackContainer = ()=> {
       
   )
 }
+
+export default CreateFeedbackContainer

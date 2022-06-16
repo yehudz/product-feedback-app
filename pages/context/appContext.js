@@ -1,3 +1,5 @@
 const { createContext } = require("react");
 
-export const appContext = createContext()
+const appContext = createContext()
+
+export default appContext

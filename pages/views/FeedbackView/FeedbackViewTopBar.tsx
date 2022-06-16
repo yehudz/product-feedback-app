@@ -9,7 +9,7 @@ interface FeedbackViewTopBarProps {
   request: Request
 }
 
-export const FeedbackViewTopBar = ({request}: FeedbackViewTopBarProps)=> {
+const FeedbackViewTopBar = ({request}: FeedbackViewTopBarProps)=> {
   return(
     <Stack 
       flexDirection={'row'} 
@@ -27,3 +27,5 @@ export const FeedbackViewTopBar = ({request}: FeedbackViewTopBarProps)=> {
     </Stack>
   )
 }
+
+export default FeedbackViewTopBar

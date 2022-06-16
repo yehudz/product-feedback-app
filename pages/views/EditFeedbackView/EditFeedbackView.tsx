@@ -28,7 +28,7 @@ interface EditFeedbackViewProps {
   request: Request
 }
 
-export const EditFeedbackView = ({request}: EditFeedbackViewProps)=> {
+const EditFeedbackView = ({request}: EditFeedbackViewProps)=> {
   const [feedbackTitle, setFeedbackTitle] = useState<string>(request.title)
   const [categorySelection, setCategorySelection] = useState<string>()
   const [status, setStatus] = useState<string>()
@@ -172,3 +172,5 @@ export const EditFeedbackView = ({request}: EditFeedbackViewProps)=> {
       
   )
 }
+
+export default EditFeedbackView

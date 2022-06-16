@@ -2,7 +2,7 @@ import { Box, Typography, Grid } from '@mui/material';
 import PanelStyles from '../../../styles/Panel.module.scss';
 import GoBackBtnLight from '../buttons/GoBackBtnLight';
 import Link from 'next/link';
-export const RoadmapPanel = ()=> {
+const RoadmapPanel = ()=> {
 
   // Dummy data
   const roadmapList = [
@@ -82,3 +82,5 @@ export const RoadmapPanel = ()=> {
     </Box>
   )
 }
+
+export default RoadmapPanel

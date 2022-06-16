@@ -3,7 +3,7 @@ import prisma from '../../db'
 import React, {Suspense} from 'react'
 import { useEffect, useState } from 'react'
 import {Request} from '../../typings/common.types'
-import { EditFeedbackView } from '../views/EditFeedbackView/EditFeedbackView'
+import EditFeedbackView from '../views/EditFeedbackView/EditFeedbackView'
 
 interface EditFeedbackProps {
   request: Request

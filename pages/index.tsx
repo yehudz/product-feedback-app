@@ -7,9 +7,9 @@ import Head from 'next/head'
 // Server imports
 import { GetServerSideProps } from 'next'
 // React component imports
-import { MobileTopBarContainer } from './components/MobileTopBar/MobileTopBarContainer';
+import MobileTopBarContainer from './components/MobileTopBar/MobileTopBarContainer';
 const FeedbackView = React.lazy(()=> import('./views/FeedbackView/FeedbackView'))
-import { appContext } from './context/appContext'
+import appContext from './context/appContext'
 const MobileNavMenu = React.lazy(()=> import('./components/MobileNavMenu/MobileNavMenu'));
 import prisma from '../db'
 const Home: NextPage = ({requests}: any) => {

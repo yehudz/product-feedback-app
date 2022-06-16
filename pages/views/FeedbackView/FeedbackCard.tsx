@@ -3,7 +3,7 @@ import FeedbackCardStyles from '../../../styles/FeedbackCard.module.scss'
 import ButtonStyles from '../../../styles/Buttons.module.scss'
 import { Typography } from '@mui/material'
 import CategoryButton from '../../components/buttons/CategoryButton'
-import {CommentsNotification} from '../../components/CommentsNotification'
+import CommentsNotification from '../../components/CommentsNotification'
 import { server } from '../../../config'
 import Link from 'next/link'
 import { useState } from 'react'
@@ -16,7 +16,7 @@ interface FeedbackCardProps {
   }
 }
 
-export const FeedbackCard = ({request, isRoadmap, status}: FeedbackCardProps)=> {
+const FeedbackCard = ({request, isRoadmap, status}: FeedbackCardProps)=> {
   const [upvoted, setUpvoted] = useState<boolean>(request.liked)
   const [upvotesCount, setUpvotesCount] = useState<number>(request.upvotes?request.upvotes:0)
   let upvoteParams = {
@@ -82,3 +82,5 @@ export const FeedbackCard = ({request, isRoadmap, status}: FeedbackCardProps)=> 
     </div>
   )
 }
+
+export default FeedbackCard

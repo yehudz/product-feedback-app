@@ -18,7 +18,7 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
-export const InputField = ({setValue, multiLine, placeholder, isComment, handleKeyDown, defaultValue}: TextFieldProps)=> {
+const InputField = ({setValue, multiLine, placeholder, isComment, handleKeyDown, defaultValue}: TextFieldProps)=> {
   let input = useRef<HTMLInputElement>(null)
   const [error, setError] = useState<boolean>()
   const classes = useStyles();
@@ -71,3 +71,4 @@ export const InputField = ({setValue, multiLine, placeholder, isComment, handleK
     />
   )
 }
+export default InputField

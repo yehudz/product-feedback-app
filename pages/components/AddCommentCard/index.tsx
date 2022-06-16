@@ -1,8 +1,8 @@
 import { CardWrapper } from "../Card/CardContainer"
 import { Snackbar, CardContent, CardHeader, Typography, Box, Stack } from "@mui/material"
-import { InputField } from "../inputs/InputField"
+import InputField from "../inputs/InputField"
 import PrimaryButton from "../buttons/PrimaryButton"
-import { userContext } from '../../context/userContext'
+import userContext from '../../context/userContext'
 import React, { useContext, useEffect, useState } from "react"
 import { Request } from '../../../typings/common.types'
 import { useRouter } from 'next/router'
@@ -23,7 +23,7 @@ const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
 });
 
-export const AddCommentCard = ({setValue, characterCount, handleKeyDown, request, value}: AddCommentCardProps)=> {
+const AddCommentCard = ({setValue, characterCount, handleKeyDown, request, value}: AddCommentCardProps)=> {
   const {currentUser} = useContext(userContext)
   const router = useRouter()
   const [validate, setValidate] = useState<boolean>(false)
@@ -108,3 +108,5 @@ export const AddCommentCard = ({setValue, characterCount, handleKeyDown, request
     </>
   )
 }
+
+export default AddCommentCard

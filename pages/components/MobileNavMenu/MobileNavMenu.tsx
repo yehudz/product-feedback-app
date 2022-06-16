@@ -1,6 +1,6 @@
 import MobileNavMenuStyles from '../../../styles/MobileNavMenu.module.scss';
-import { CategoryFiltersPanel } from '../CategoryFiltersPanel/CategoryFiltersPanel';
-import { RoadmapPanel } from '../RoadmapPanel/RoadmapPanel';
+import CategoryFiltersPanel from '../CategoryFiltersPanel/CategoryFiltersPanel';
+import RoadmapPanel from '../RoadmapPanel/RoadmapPanel';
 const MobileNavMenu = ()=> {
   return(
     <div className={MobileNavMenuStyles.container}>
