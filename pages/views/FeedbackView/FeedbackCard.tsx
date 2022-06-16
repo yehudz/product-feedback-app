@@ -9,9 +9,14 @@ import Link from 'next/link'
 import { useState } from 'react'
 interface FeedbackCardProps {
   request: Request
+  isRoadmap?: boolean
+  status: {
+    title: string
+    color: string
+  }
 }
 
-export const FeedbackCard = ({request}: FeedbackCardProps)=> {
+export const FeedbackCard = ({request, isRoadmap, status}: FeedbackCardProps)=> {
   const [upvoted, setUpvoted] = useState<boolean>(request.liked)
   const [upvotesCount, setUpvotesCount] = useState<number>(request.upvotes?request.upvotes:0)
   let upvoteParams = {
@@ -40,7 +45,13 @@ export const FeedbackCard = ({request}: FeedbackCardProps)=> {
 
   return(
     <div className={FeedbackCardStyles.container}>
+      {isRoadmap && <div className={FeedbackCardStyles.cardTopline} style={{backgroundColor: status.color}}></div>}
       <div className={FeedbackCardStyles.contentArea}>
+        {isRoadmap && <div className={FeedbackCardStyles.statusContainer}>
+            <div className={FeedbackCardStyles.dot} style={{backgroundColor: status.color}}></div>
+            <div className={FeedbackCardStyles.title}>{status.title}</div>
+          </div>
+        }
         <Link href={`/feedback/${request.id}`}>
           <Typography 
             variant='h4' 

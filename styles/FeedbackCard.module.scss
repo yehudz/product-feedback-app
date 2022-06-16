@@ -1,4 +1,7 @@
+@use './variables.scss';
+
 .container {
+  position: relative;
   display: grid;
   grid-template-columns: .5fr 1fr .5fr;
   margin: 24px;
@@ -28,6 +31,29 @@
     img {
       margin-right: 8px;
     }
+  }
+
+  .statusContainer {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+    .title {
+      font-size: 13px;
+      color: variables.$success-light;
+      margin-left: 8px;
+    }
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+  }
+
+  .cardTopline {
+    position: absolute;
+    height: 6px;
+    width: 100%;
+    border-radius: 10px 10px 0 0 ;
   }
 }
 

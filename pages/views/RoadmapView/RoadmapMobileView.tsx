@@ -96,22 +96,34 @@ export default function RoadmapMobileView({requests}: RoadmapViewProps) {
       </Box>
       <TabPanel value={value} index={0}>
         {planned.map(item=> {
+          let statusParams = {
+            title: 'Planned',
+            color: '#F49F85'
+          }
           return(
-            <FeedbackCard request={item} />
+            <FeedbackCard request={item} isRoadmap={true} status={statusParams}/>
           )
         })}
       </TabPanel>
       <TabPanel value={value} index={1}>
         {inProgress.map(item=> {
+          let statusParams = {
+            title: 'In-Progress',
+            color: '#AD1FEA'
+          }
           return(
-            <FeedbackCard request={item} />
+            <FeedbackCard request={item} isRoadmap={true} status={statusParams}/>
           )
         })}
       </TabPanel>
       <TabPanel value={value} index={2}>
         {live.map(item=> {
+          let statusParams = {
+            title: 'In-Progress',
+            color: '#AD1FEA'
+          }
           return(
-            <FeedbackCard request={item} />
+            <FeedbackCard request={item} isRoadmap={true} status={statusParams}/>
           )
         })}
       </TabPanel>
