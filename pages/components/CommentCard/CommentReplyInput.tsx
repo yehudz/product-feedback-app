@@ -8,7 +8,7 @@ import {server} from '../../../config'
 interface CommentReplyInputProp {
   commentId: number
   replyingTo: string
-  setShowPostReplyInput: ()=> void
+  setShowPostReplyInput: any
 }
 
 export const CommentReplyInput = ({commentId, replyingTo, setShowPostReplyInput}: CommentReplyInputProp)=> {
