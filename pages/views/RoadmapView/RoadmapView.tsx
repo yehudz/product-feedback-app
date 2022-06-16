@@ -1,11 +1,18 @@
-import React from "react"
+import React, {Suspense} from "react"
 import { RoadmapViewTopBar } from "./RoadmapViewTopbar"
+import {Request} from '@prisma/client'
+interface RoadmapViewProps {
+  requests: Request[]
+}
+
 const RoadmapMobileView = React.lazy(()=> import('./RoadmapMobileView'))
-const RoadmapView = ()=> {
+const RoadmapView = ({requests}: RoadmapViewProps) => {
   return(
     <>
       <RoadmapViewTopBar />
-      <RoadmapMobileView />
+      <Suspense fallback={<h1>Loading...</h1>}>
+        <RoadmapMobileView requests={requests}/>
+      </Suspense>
     </>
   )
 }

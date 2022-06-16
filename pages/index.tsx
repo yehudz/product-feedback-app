@@ -13,6 +13,7 @@ import { appContext } from './context/appContext'
 const MobileNavMenu = React.lazy(()=> import('./components/MobileNavMenu/MobileNavMenu'));
 import prisma from '../db'
 const Home: NextPage = ({requests}: any) => {
+  console.log(requests)
   const {mobileMenuVisibility} = useContext(appContext)
   return (
     <>

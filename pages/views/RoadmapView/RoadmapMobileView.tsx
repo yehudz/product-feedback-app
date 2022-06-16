@@ -5,6 +5,11 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 
 import {makeStyles} from '@mui/styles'
+import {Request} from '@prisma/client'
+import { FeedbackCard } from '../FeedbackView/FeedbackCard';
+interface RoadmapViewProps {
+  requests: Request[]
+}
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -30,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
 
 function TabPanel(props: TabPanelProps) {
   const { children, value, index, ...other } = props;
-  
+
   return (
     <div
       role="tabpanel"
@@ -55,17 +60,25 @@ function a11yProps(index: number) {
   };
 }
 
-export default function RoadmapMobileView() {
+export default function RoadmapMobileView({requests}: RoadmapViewProps) {
   const [value, setValue] = React.useState(0);
   const classes = useStyles();
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };
 
-  // Dummy data
-  const planned = 2
-  const inProgress = 3
-  const live = 1
+  const planned = requests.filter(request=> {
+    if (request.status === 'Planned') return request
+  })
+
+  const inProgress = requests.filter(request=> {
+    if (request.status === 'In-Progress') return request
+  })
+
+  const live = requests.filter(request=> {
+    if (request.status === 'Live') return request
+  })
+
   return (
     <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
@@ -76,19 +89,31 @@ export default function RoadmapMobileView() {
           textColor="inherit"
           className={classes.tabStyle}
         >
-          <Tab className={classes.tabStyle} label={`Planned (${planned})`} {...a11yProps(0)} sx={{textTransform: 'none'}} disableRipple/>
-          <Tab className={classes.tabStyle} label={`In-Progress (${inProgress})`} {...a11yProps(1)} sx={{textTransform: 'none'}} disableRipple/>
-          <Tab className={classes.tabStyle} label={`Live (${live})`} {...a11yProps(2)} sx={{textTransform: 'none'}} disableRipple/>
+          <Tab className={classes.tabStyle} label={`Planned (${planned.length})`} {...a11yProps(0)} sx={{textTransform: 'none'}} disableRipple/>
+          <Tab className={classes.tabStyle} label={`In-Progress (${inProgress.length})`} {...a11yProps(1)} sx={{textTransform: 'none'}} disableRipple/>
+          <Tab className={classes.tabStyle} label={`Live (${live.length})`} {...a11yProps(2)} sx={{textTransform: 'none'}} disableRipple/>
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
-        Item One
+        {planned.map(item=> {
+          return(
+            <FeedbackCard request={item} />
+          )
+        })}
       </TabPanel>
       <TabPanel value={value} index={1}>
-        Item Two
+        {inProgress.map(item=> {
+          return(
+            <FeedbackCard request={item} />
+          )
+        })}
       </TabPanel>
       <TabPanel value={value} index={2}>
-        Item Three
+        {live.map(item=> {
+          return(
+            <FeedbackCard request={item} />
+          )
+        })}
       </TabPanel>
     </Box>
   );

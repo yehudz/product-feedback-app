@@ -1,4 +1,4 @@
-import {Request} from '../../../typings/common.types'
+import {Request} from '@prisma/client'
 import FeedbackCardStyles from '../../../styles/FeedbackCard.module.scss'
 import ButtonStyles from '../../../styles/Buttons.module.scss'
 import { Typography } from '@mui/material'
@@ -19,7 +19,6 @@ export const FeedbackCard = ({request}: FeedbackCardProps)=> {
     upvotes: request.liked ? request?.upvotes - 1 : request.upvotes + 1,
     liked: request.liked ? false : true
   }
-
   async function handleUpvote() {
     await fetch('http://localhost:3000/api/addUpvote', {
       method: 'POST',
