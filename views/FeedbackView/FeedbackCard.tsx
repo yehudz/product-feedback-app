@@ -25,7 +25,7 @@ const FeedbackCard = ({request, isRoadmap, status}: FeedbackCardProps)=> {
     liked: request.liked ? false : true
   }
   async function handleUpvote() {
-    await fetch(`${server}/api/addUpvote`, {
+    await fetch(`/api/addUpvote`, {
       method: 'POST',
       body: JSON.stringify(upvoteParams),
       headers: {
