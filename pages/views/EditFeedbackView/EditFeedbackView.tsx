@@ -1,10 +1,18 @@
-import { Grid } from "@mui/material"
+import { Grid, Snackbar } from "@mui/material"
 import CardContainer from "../../components/Card/CardContainer"
 import Link from "next/link"
 import GoBackBtnLight from "../../components/buttons/GoBackBtnLight"
 import { CaretLeft } from "phosphor-react"
-import { useState } from "react"
+import React, { useState } from "react"
 import { Request} from '@prisma/client';
+import MuiAlert, { AlertProps } from '@mui/material/Alert';
+
+const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
+  props,
+  ref,
+) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
 
 interface EditFeedbackViewProps {
   request: Request
@@ -15,6 +23,9 @@ export const EditFeedbackView = ({request}: EditFeedbackViewProps)=> {
   const [categorySelection, setCategorySelection] = useState<string>()
   const [status, setStatus] = useState<string>()
   const [message, setMessage] = useState<string>()
+  const [openSnackbar, setOpenSnackbar] = useState<boolean>(false)
+  const [validate, setValidate] = useState<boolean>(false)
+  const [snackbarMessage, setSnackbarMessage] = useState<string>()
 
   let params = {
     id: request.id,
@@ -24,14 +35,31 @@ export const EditFeedbackView = ({request}: EditFeedbackViewProps)=> {
     status: status ? status : 'Suggestion',
   }
   async function saveFeedbackApiCall() {
-   const res = await fetch('http://localhost:3000/api/editFeedback', {
-     body: JSON.stringify(params),
-     method: 'POST',
-     headers: {
-       'Content-type': 'application/json'
-     }
-   })
-   if (res) window.location.assign('/')
+    if (!feedbackTitle || !message) {
+      setValidate(false)
+      setSnackbarMessage('Fields Cannot be Empty')
+      setOpenSnackbar(true)
+      return
+    } else {
+      try {
+      await fetch('http://localhost:3000/api/editFeedback', {
+        body: JSON.stringify(params),
+        method: 'POST',
+        headers: {
+          'Content-type': 'application/json'
+        }
+      }).then(()=> {
+      window.location.assign('/')
+    })
+      } catch (error) {
+        setSnackbarMessage('Something went wrong, please try again later')
+        setOpenSnackbar(true)
+      }
+    }
+  }
+
+  function handleClose() {
+    setOpenSnackbar(false)
   }
 
   const icon = '../assets/shared/icon-edit-feedback.svg'
@@ -46,6 +74,15 @@ export const EditFeedbackView = ({request}: EditFeedbackViewProps)=> {
   const statusMenuItems = ['Suggestion', 'Planned', 'In-Progress', 'Live']
   return(
     <>
+      {!validate && <Snackbar
+        anchorOrigin={{ vertical: 'top', horizontal: 'center'}}
+        open={openSnackbar}
+        onClose={handleClose}
+        autoHideDuration={3000}
+      >
+        <Alert severity="error">{snackbarMessage}</Alert>
+      </Snackbar>
+      }
       <Link href="/">
         <GoBackBtnLight startIcon={<CaretLeft size={16}/>}>Go Back</GoBackBtnLight>
       </Link>

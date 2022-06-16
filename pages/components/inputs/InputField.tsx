@@ -67,7 +67,7 @@ export const InputField = ({setValue, multiLine, placeholder, isComment, handleK
       minRows={isComment ? 3 : 6}
       placeholder={placeholder}
       defaultValue={defaultValue}
-      value={defaultValue}
+      // value={defaultValue}
     />
   )
 }

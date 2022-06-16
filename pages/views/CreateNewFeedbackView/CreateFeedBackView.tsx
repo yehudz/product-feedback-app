@@ -3,7 +3,7 @@ import CardContainer from "../../components/Card/CardContainer"
 import Link from "next/link"
 import GoBackBtnLight from "../../components/buttons/GoBackBtnLight"
 import { CaretLeft } from "phosphor-react"
-import React, { useEffect, useState } from "react"
+import React, { useState } from "react"
 import MuiAlert, { AlertProps } from '@mui/material/Alert';
 
 const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
