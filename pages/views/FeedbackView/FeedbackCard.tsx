@@ -10,7 +10,7 @@ import { useState } from 'react'
 interface FeedbackCardProps {
   request: Request
   isRoadmap?: boolean
-  status: {
+  status?: {
     title: string
     color: string
   }

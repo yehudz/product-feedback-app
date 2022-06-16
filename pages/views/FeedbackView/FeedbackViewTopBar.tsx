@@ -2,9 +2,14 @@ import { Stack } from "@mui/material"
 import GoBackBtnLight from "../../components/buttons/GoBackBtnLight"
 import SecondaryButton from "../../components/buttons/SecondayButton"
 import { CaretLeft } from "phosphor-react"
-import { Request } from '../../../typings/common.types'
+import { Request } from '@prisma/client'
 import Link from "next/link"
-export const FeedbackViewTopBar = ({request}: Request)=> {
+
+interface FeedbackViewTopBarProps {
+  request: Request
+}
+
+export const FeedbackViewTopBar = ({request}: FeedbackViewTopBarProps)=> {
   return(
     <Stack 
       flexDirection={'row'} 
