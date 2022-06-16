@@ -25,10 +25,11 @@ const FeedbackCard = ({request, isRoadmap, status}: FeedbackCardProps)=> {
     liked: request.liked ? false : true
   }
   async function handleUpvote() {
-    await fetch(`/api/addUpvote`, {
+    await fetch(`${server}/api/addUpvote`, {
       method: 'POST',
       body: JSON.stringify(upvoteParams),
       headers: {
+        'Authorization': 'product-feedback-app-tau.vercel.app',
         'Content-type': 'application/json'
       }
     }).then(()=> {
