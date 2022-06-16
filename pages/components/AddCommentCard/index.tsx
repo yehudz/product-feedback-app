@@ -27,6 +27,7 @@ export const AddCommentCard = ({setValue, characterCount, handleKeyDown, request
   const router = useRouter()
   const [validate, setValidate] = useState<boolean>(false)
   const [openSnackbar, setOpenSnackbar] = useState<boolean>(false)
+  const [snackbarMessage, setSnackbarMessage] = useState<string>()
 
   function handleClose() {
     setOpenSnackbar(false)
@@ -42,6 +43,7 @@ export const AddCommentCard = ({setValue, characterCount, handleKeyDown, request
   }
   async function saveComment() {
     if (!validate) {
+      setSnackbarMessage('Fields Cannot be Empty')
       setOpenSnackbar(true)
       return
     }
@@ -54,7 +56,8 @@ export const AddCommentCard = ({setValue, characterCount, handleKeyDown, request
         refreshData()
       })
     } catch (error) {
-      console.log(error)
+      setSnackbarMessage('Something went wrong')
+      setOpenSnackbar(true)
     }
   }
 
@@ -72,7 +75,7 @@ export const AddCommentCard = ({setValue, characterCount, handleKeyDown, request
         onClose={handleClose}
         autoHideDuration={3000}
       >
-        <Alert severity="error">Fields Cannot be empty</Alert>
+        <Alert severity="error">{snackbarMessage}</Alert>
       </Snackbar>
       }
       <CardWrapper elevation={0} sx={{margin: '0 auto'}}>
