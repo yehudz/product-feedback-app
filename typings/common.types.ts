@@ -14,7 +14,7 @@ export type Comment = {
 
 export interface Request {
   category: string;
-  comments?: Comment[];
+  comments: Comment[];
   description: string;
   id: number;
   status: string;

@@ -7,8 +7,8 @@ import Head from 'next/head'
 // Server imports
 import { GetServerSideProps } from 'next'
 // React component imports
-import { MobileTopBarContainer } from './components/MobileTopBar/MobileTopBarContainer'
-import { FeedbackView } from './views/FeedbackView/FeedbackView'
+import { MobileTopBarContainer } from './components/MobileTopBar/MobileTopBarContainer';
+const FeedbackView = React.lazy(()=> import('./views/FeedbackView/FeedbackView'))
 import { appContext } from './context/appContext'
 const MobileNavMenu = React.lazy(()=> import('./components/MobileNavMenu/MobileNavMenu'));
 import prisma from '../db'
@@ -23,7 +23,9 @@ const Home: NextPage = ({requests}: any) => {
       {mobileMenuVisibility && <Suspense fallback={<h1>Loading</h1>}>
         <MobileNavMenu />
       </Suspense>}
-      <FeedbackView requests={requests}/>
+      <Suspense fallback={<h1 style={{color: '#000'}}>Loading...</h1>}>
+        <FeedbackView requests={requests}/>
+      </Suspense>
     </>
   )
 }

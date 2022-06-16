@@ -12,6 +12,7 @@ import { useState } from 'react';
 function MyApp({ Component, pageProps }: AppProps) {
   const [mobileMenuVisibility, setMobileMenuVisibility] = useState<boolean>(false)
   const [selectedPanelFilterOption, setSelectedPanelFilterOption] = useState<string>()
+  const [mainMenuFilterOption, setMainFilterOption] = useState<string>('Most Upvotes')
 
   return (
     <ThemeProvider theme={theme}>
@@ -26,7 +27,9 @@ function MyApp({ Component, pageProps }: AppProps) {
           mobileMenuVisibility, 
           setMobileMenuVisibility,
           selectedPanelFilterOption,
-          setSelectedPanelFilterOption
+          setSelectedPanelFilterOption,
+          mainMenuFilterOption,
+          setMainFilterOption
         }}>
         <Layout>
           <UserProvider>

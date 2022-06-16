@@ -9,6 +9,8 @@ import { Button, Typography } from '@mui/material';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { Check } from 'phosphor-react';
 
+import {appContext} from '../context/appContext'
+
 interface DropDownMenuProps {
   menuItems: string[]
   sortDropdown: boolean
@@ -119,6 +121,7 @@ export default function DropDownMenu({ menuItems, sortDropdown, mobile, setCateg
   const buttonRef = React.useRef<HTMLButtonElement>(null);
   const menuActions = React.useRef<MenuUnstyledActions>(null);
   const [selectedMenuOption, setSelectedMenuOption] = React.useState<string>(savedCategoryOption ? savedCategoryOption : '')
+  const {setMainFilterOption} = React.useContext(appContext)
   const handleButtonClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     if (isOpen) {
       setAnchorEl(null);
@@ -149,8 +152,9 @@ export default function DropDownMenu({ menuItems, sortDropdown, mobile, setCateg
       });
       // TO DO: Add menu item selection and sorting for items
       (e.target as Element).classList.add('active')
-      setCategorySelection(optionName)
-      setSelectedMenuOption(optionName)
+      if (setCategorySelection) setCategorySelection(optionName)
+      if (setSelectedMenuOption) setSelectedMenuOption(optionName)
+      setMainFilterOption(optionName)
       close();
     };
   };
