@@ -4,6 +4,7 @@ import PrimaryButton from '../buttons/PrimaryButton'
 import {InputField} from '../inputs/InputField'
 import CommentStyles from '../../../styles/Comment.module.scss'
 import { useRouter } from 'next/router'
+import {server} from '../../../config'
 interface CommentReplyInputProp {
   commentId: number
   replyingTo: string
@@ -24,7 +25,7 @@ export const CommentReplyInput = ({commentId, replyingTo, setShowPostReplyInput}
   }
   async function handleReplyPost() {
     try {
-      await fetch(`http://localhost:3000/api/addReply`, {
+      await fetch(`${server}/api/addReply`, {
         method: 'POST',
         body: JSON.stringify(replyParams)
       }).then(()=> {

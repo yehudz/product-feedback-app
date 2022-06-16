@@ -5,6 +5,7 @@ import GoBackBtnLight from "../../components/buttons/GoBackBtnLight"
 import { CaretLeft } from "phosphor-react"
 import React, { useState } from "react"
 import MuiAlert, { AlertProps } from '@mui/material/Alert';
+import {server} from '../../../config'
 
 const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
   props,
@@ -31,7 +32,7 @@ export const CreateFeedbackContainer = ()=> {
   function handleClose() {
     setOpenSnackbar(false)
   }
-
+  console.log(server)
   async function saveFeedbackApiCall() {
     if (!title || !message) {
       setValidate(false)
@@ -41,7 +42,7 @@ export const CreateFeedbackContainer = ()=> {
     } else {
       setValidate(true)
       try {
-        await fetch('http://localhost:3000/api/createRequest', {
+        await fetch(`${server}/api/createRequest`, {
         body: JSON.stringify(params),
         method: 'POST'
       }).then(()=> {

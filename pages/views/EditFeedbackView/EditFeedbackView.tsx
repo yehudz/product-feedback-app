@@ -16,7 +16,7 @@ import { CaretLeft } from "phosphor-react"
 import React, { useState } from "react"
 import { Request} from '@prisma/client';
 import MuiAlert, { AlertProps } from '@mui/material/Alert';
-
+import { server } from "../../../config"
 const Alert = React.forwardRef<HTMLDivElement, AlertProps>(function Alert(
   props,
   ref,
@@ -53,7 +53,7 @@ export const EditFeedbackView = ({request}: EditFeedbackViewProps)=> {
       return
     } else {
       try {
-      await fetch('http://localhost:3000/api/editFeedback', {
+      await fetch(`${server}/api/editFeedback`, {
         body: JSON.stringify(params),
         method: 'POST',
         headers: {
@@ -75,7 +75,7 @@ export const EditFeedbackView = ({request}: EditFeedbackViewProps)=> {
 
   async function deleteFeedback() {
     try {
-      await fetch('http://localhost:3000/api/deleteRequest', {
+      await fetch(`${server}/api/deleteRequest`, {
         body: JSON.stringify({id: request.id}),
         method: 'DELETE',
         headers: {

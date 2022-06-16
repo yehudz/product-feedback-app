@@ -7,6 +7,7 @@ import React, { useContext, useEffect, useState } from "react"
 import { Request } from '../../../typings/common.types'
 import { useRouter } from 'next/router'
 import MuiAlert, { AlertProps } from '@mui/material/Alert';
+import {server} from '../../../config'
 interface AddCommentCardProps {
   setValue: (value: string)=> void
   characterCount?: number
@@ -48,7 +49,7 @@ export const AddCommentCard = ({setValue, characterCount, handleKeyDown, request
       return
     }
     try {
-      await fetch(`http://localhost:3000/api/addComment`, {
+      await fetch(`${server}/api/addComment`, {
         method: 'POST',
         body: JSON.stringify(commentParams)
       }).then(()=> {

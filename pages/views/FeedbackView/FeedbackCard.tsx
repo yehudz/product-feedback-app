@@ -4,7 +4,7 @@ import ButtonStyles from '../../../styles/Buttons.module.scss'
 import { Typography } from '@mui/material'
 import CategoryButton from '../../components/buttons/CategoryButton'
 import {CommentsNotification} from '../../components/CommentsNotification'
-
+import { server } from '../../../config'
 import Link from 'next/link'
 import { useState } from 'react'
 interface FeedbackCardProps {
@@ -25,7 +25,7 @@ export const FeedbackCard = ({request, isRoadmap, status}: FeedbackCardProps)=> 
     liked: request.liked ? false : true
   }
   async function handleUpvote() {
-    await fetch('http://localhost:3000/api/addUpvote', {
+    await fetch(`${server}/api/addUpvote`, {
       method: 'POST',
       body: JSON.stringify(upvoteParams),
       headers: {
