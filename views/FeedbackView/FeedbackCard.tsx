@@ -29,7 +29,7 @@ const FeedbackCard = ({request, isRoadmap, status}: FeedbackCardProps)=> {
       method: 'POST',
       body: JSON.stringify(upvoteParams),
       headers: {
-        'Authorization': 'product-feedback-app-tau.vercel.app',
+        'Authorization': 'Wdr7zzVD1CkZRZ0hPXDPD1Kh',
         'Content-type': 'application/json'
       }
     }).then(()=> {
