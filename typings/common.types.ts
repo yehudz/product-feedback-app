@@ -13,6 +13,14 @@ export type Comment = {
   replies?: string[]
 }
 
+export type Reply = {
+  content: string;
+  id: number;
+  commentId: number;
+  replyingTo: string;
+  user: User[]
+}
+
 export interface Request {
   category: string;
   comments: Comment[];

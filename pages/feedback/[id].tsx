@@ -103,7 +103,11 @@ export const getStaticProps: GetStaticProps = async ({params})=> {
       comments: {
         include: {
           user: true,
-          replies: true
+          replies: {
+            include: {
+              user: true
+            }
+          }
         }
       },
     },

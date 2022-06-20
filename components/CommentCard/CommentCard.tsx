@@ -3,7 +3,7 @@ import React, {Suspense, useEffect, useState} from 'react'
 import CommentStyles from '../../styles/Comment.module.scss'
 import { Typography } from '@mui/material'
 import CommentReplyInput from './CommentReplyInput'
-import { Reply } from "@prisma/client";
+import { Reply } from "../../typings/common.types";
 // import { ReplyCard } from '../ReplyCard/ReplyCard'
 const ReplyCard = React.lazy(() => import('../ReplyCard/ReplyCard'));
 interface CommentCardProps {
@@ -58,13 +58,14 @@ const CommentCard = ({
       {showPostReplyInput && <CommentReplyInput commentId={commentId} replyingTo={username} setShowPostReplyInput={setShowPostReplyInput}/> }
       {replies && <Suspense><div className={CommentStyles.repliesContainer}>
         {replies.map((reply: Reply)=> {
+          console.log(reply)
         return(
             <ReplyCard 
               key={reply.id}
-              name={name}
-              username={username}
-              userImage={userImage}
-              replyingTo={username}
+              name={reply.user[0].name}
+              username={reply.user[0].username}
+              userImage={reply.user[0].image}
+              replyingTo={reply.replyingTo}
               comment={reply.content}
               commentId={commentId}
             />
