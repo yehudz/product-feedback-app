@@ -46,7 +46,7 @@ const CreateFeedbackContainer = ()=> {
         body: JSON.stringify(params),
         method: 'POST'
       }).then(()=> {
-        window.location.assign('/')
+        // window.location.assign('/')
       })
       } catch (error) {
         setSnackbarMessage('Something went wrong, please try again later')
