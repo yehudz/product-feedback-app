@@ -58,7 +58,6 @@ const CommentCard = ({
       {showPostReplyInput && <CommentReplyInput commentId={commentId} replyingTo={username} setShowPostReplyInput={setShowPostReplyInput}/> }
       {replies && <Suspense><div className={CommentStyles.repliesContainer}>
         {replies.map((reply: Reply)=> {
-          console.log(reply)
         return(
             <ReplyCard 
               key={reply.id}

@@ -52,13 +52,14 @@ const Feedback = ({request}: FeedbackProps)=> {
         <Suspense>
         {request?.comments.map((comment: Comment)=> {
           const user: User = comment.user[0]
+          console.log(comment)
           return(
             
               <CommentCard 
                 key={comment.id}
-                username={user.username}
-                userImage={user.image}
-                name={user.name}
+                username={user?.username}
+                userImage={user?.image}
+                name={user?.name}
                 comment={comment.content}
                 commentId={comment.id}
                 replies={comment.replies}

@@ -32,7 +32,6 @@ const CreateFeedbackContainer = ()=> {
   function handleClose() {
     setOpenSnackbar(false)
   }
-  console.log(server)
   async function saveFeedbackApiCall() {
     if (!title || !message) {
       setValidate(false)
