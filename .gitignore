@@ -37,3 +37,4 @@ yarn-error.log*
 /product-feedback-app
 /product-feedback-app-figma
 .history
+.env
