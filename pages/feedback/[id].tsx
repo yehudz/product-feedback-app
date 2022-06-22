@@ -1,4 +1,4 @@
-import { GetStaticProps } from 'next'
+import { GetServerSideProps } from 'next'
 import dynamic from "next/dynamic";
 import FeedbackCard from '../../views/FeedbackView/FeedbackCard'
 import FeedbackViewTopBar from '../../views/FeedbackView/FeedbackViewTopBar'
@@ -10,6 +10,8 @@ import {Request, Comment, User} from '../../typings/common.types'
 import { Box, Typography } from '@mui/material'
 import { useEffect, useState } from 'react'
 import prisma from '../../db'
+
+import {useRouter} from 'next/router'
 
 interface FeedbackProps {
   request: Request
@@ -94,8 +96,9 @@ export const getStaticPaths = async ()=> {
   }
 }
 
-export const getStaticProps: GetStaticProps = async ({params})=> {
-  const id: string = params?.id as string
+export const getServerSideProps: GetServerSideProps = async ({params})=> {
+  const router = useRouter()
+  const id = router.query.id as string
   const request = await prisma.request.findUnique({
     where: {
       id: parseInt(id)
