@@ -1,53 +1,59 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
   previewFeatures = ["referentialIntegrity"]
 }
 
 datasource db {
-  provider = "mysql"
-  url = env("DATABASE_URL")
+  provider             = "mysql"
+  url                  = env("DATABASE_URL")
   referentialIntegrity = "prisma"
 }
 
 model User {
-  id String @default(uuid()) @id
-  image String
-  name String
-  username String
-  comment Comment[]
+  id        String    @id @default(uuid())
+  image     String
+  name      String
+  username  String
+  comment   Comment[]
   commentId Int?
-  reply Reply? @relation(fields: [replyId], references: [id])
-  replyId Int?
+  reply     Reply?    @relation(fields: [replyId], references: [id])
+  replyId   Int?
 }
 
 model Comment {
-  content String
-  id          Int @id @default(autoincrement())
+  content   String
+  id        Int      @id @default(autoincrement())
   request   Request? @relation(fields: [requestId], references: [id])
   requestId Int?
-  user User[]
-  replies Reply[]
+  user      User[]
+  replies   Reply[]
 }
 
 model Reply {
-  id Int @id @default(autoincrement())
-  content String
+  id         Int      @id @default(autoincrement())
+  content    String
   replyingTo String
-  comment Comment? @relation(fields: [commentId], references: [id])
-  commentId Int?
-  user User[]
+  comment    Comment? @relation(fields: [commentId], references: [id])
+  commentId  Int?
+  user       User[]
 }
 
 model Request {
-  category String
-  comments Comment[]
+  category    String
+  comments    Comment[]
   description String
-  id Int @id @default(autoincrement())
-  status String?
-  title String
-  upvotes Int?
-  liked Boolean?
+  id          Int       @id @default(autoincrement())
+  status      String?
+  title       String
+  upvotes     Int?
+  liked       Boolean?
+}
+
+model CommentToUser {
+  A Int
+  B String
+
+  @@unique([A, B], map: "_CommentToUser_AB_unique")
+  @@index([B], map: "_CommentToUser_B_index")
+  @@map("_CommentToUser")
 }
