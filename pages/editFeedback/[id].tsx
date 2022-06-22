@@ -29,7 +29,7 @@ export const getStaticPaths = async ()=> {
   }
 }
 
-export const getStaticProps: GetStaticProps = async ({params})=> {
+export const GetServerSideProps: GetStaticProps = async ({params})=> {
   const id: string = params?.id as string
   const request = await prisma.request.findUnique({
     where: {

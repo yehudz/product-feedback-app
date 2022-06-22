@@ -5,7 +5,7 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 
 // Server imports
-import { GetStaticProps } from 'next'
+import { GetServerSideProps } from 'next'
 // React component imports
 import MobileTopBarContainer from '../components/MobileTopBar/MobileTopBarContainer';
 const FeedbackView = React.lazy(()=> import('../views/FeedbackView/FeedbackView'))
@@ -30,7 +30,7 @@ const Home: NextPage = ({requests}: any) => {
   )
 }
 
-export const getStaticProps: GetStaticProps = async ()=> {
+export const getServerSideProps: GetServerSideProps = async ()=> {
   
   const requests = await prisma.request.findMany({
     include: {
