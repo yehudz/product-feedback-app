@@ -79,7 +79,7 @@ const AddCommentCard = ({setValue, characterCount, handleKeyDown, request, value
         <Alert severity="error">{snackbarMessage}</Alert>
       </Snackbar>
       }
-      <CardWrapper elevation={0} sx={{margin: '0 auto'}}>
+      <CardWrapper elevation={0} sx={{margin: '0 auto'}} className="addCommentContainer">
         <CardContent>
           <CardHeader title={<Typography variant="h2" color="success.main">Add Comment</Typography>} />
           <Box ml={2} mr={2}>
