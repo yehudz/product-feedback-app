@@ -11,8 +11,6 @@ import { Box, Typography } from '@mui/material'
 import { useEffect, useState } from 'react'
 import prisma from '../../db'
 
-import {useRouter} from 'next/router'
-
 interface FeedbackProps {
   request: Request
 }
@@ -54,7 +52,6 @@ const Feedback = ({request}: FeedbackProps)=> {
         <Suspense>
         {request?.comments.map((comment: Comment)=> {
           const user: User = comment.user[0]
-          console.log(comment)
           return(
             
               <CommentCard 
@@ -82,23 +79,8 @@ const Feedback = ({request}: FeedbackProps)=> {
   )
 }
 
-export const getStaticPaths = async ()=> {
-  const res = await prisma.request.findMany()
-  const paths = res.map((feedback: any)=> {
-    return {
-      params: {id: feedback.id.toString()}
-    }
-  })
-
-  return {
-    paths,
-    fallback: false
-  }
-}
-
 export const getServerSideProps: GetServerSideProps = async ({params})=> {
-  const router = useRouter()
-  const id = router.query.id as string
+  const id = params?.id as string
   const request = await prisma.request.findUnique({
     where: {
       id: parseInt(id)
