@@ -1,4 +1,4 @@
-import React, {Suspense, useContext} from 'react'
+import React, {Suspense, useContext, useEffect} from 'react'
 
 // Next imports
 import type { NextPage } from 'next'
@@ -12,8 +12,42 @@ const FeedbackView = React.lazy(()=> import('../views/FeedbackView/FeedbackView'
 import appContext from '../context/appContext'
 const MobileNavMenu = React.lazy(()=> import('../components/MobileNavMenu/MobileNavMenu'));
 import prisma from '../db'
-const Home: NextPage = ({requests}: any) => {
-  const {mobileMenuVisibility} = useContext(appContext)
+import {Request} from '../typings/common.types'
+interface RoadmapProps {
+  requests: Request[]
+}
+const Home = ({requests}: RoadmapProps) => {
+  const {mobileMenuVisibility, setRoadmapsAmounts} = useContext(appContext)
+  const planned = requests.filter(request=> {
+    if (request.status === 'Planned') return request
+  })
+
+  const inProgress = requests.filter(request=> {
+    if (request.status === 'In-Progress') return request
+  })
+
+  const live = requests.filter(request=> {
+    if (request.status === 'Live') return request
+  })
+  useEffect(()=> {
+    setRoadmapsAmounts([
+      {
+        color: '#F49F85',
+        title: 'Planned',
+        amount: planned.length
+      },
+      {
+        color: '#AD1FEA',
+        title: 'In-Progress',
+        amount: inProgress.length
+      },
+      {
+        color: '#62BCFA',
+        title: 'Live',
+        amount: live.length
+      }
+    ])
+  }, [])
   return (
     <>
       <Head>

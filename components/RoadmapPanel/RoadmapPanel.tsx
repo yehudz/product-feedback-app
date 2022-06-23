@@ -1,27 +1,35 @@
 import { Box, Typography, Grid } from '@mui/material';
 import PanelStyles from '../../styles/Panel.module.scss';
 import GoBackBtnLight from '../buttons/GoBackBtnLight';
+import appContext from '../../context/appContext';
 import Link from 'next/link';
-const RoadmapPanel = ()=> {
+import { useContext } from 'react';
+type RoadmapItem = {
+  color: string;
+  title: string;
+  amount: number
+}
 
-  // Dummy data
-  const roadmapList = [
-    {
-      color: '#F49F85',
-      title: 'Planned',
-      amount: 2
-    },
-    {
-      color: '#AD1FEA',
-      title: 'In-Progress',
-      amount: 3
-    },
-    {
-      color: '#62BCFA',
-      title: 'Live',
-      amount: 1
-    }
-  ]
+const RoadmapPanel = ()=> {
+  const {roadmapAmounts} = useContext(appContext)
+  // // Dummy data
+  // const roadmapList = [
+  //   {
+  //     color: '#F49F85',
+  //     title: 'Planned',
+  //     amount: 2
+  //   },
+  //   {
+  //     color: '#AD1FEA',
+  //     title: 'In-Progress',
+  //     amount: 3
+  //   },
+  //   {
+  //     color: '#62BCFA',
+  //     title: 'Live',
+  //     amount: 1
+  //   }
+  // ]
 
   return(
     <Box className={PanelStyles.container}>
@@ -52,10 +60,10 @@ const RoadmapPanel = ()=> {
         </Link>
       </Grid>
       <Grid container>
-        <div className={PanelStyles.roadmapList}>
-          {roadmapList.map(item=> {
+        <div style={{width: '100%'}}>
+          {roadmapAmounts.map((item: RoadmapItem)=> {
             return(
-              <>
+              <div key={item.color} className={PanelStyles.roadmapList}>
                 <div 
                   className={PanelStyles.dot} 
                   style={{backgroundColor: item.color}}
@@ -74,7 +82,7 @@ const RoadmapPanel = ()=> {
                 >
                   {item.amount}
                 </Typography>
-              </>
+              </div>
             )
           })}
         </div>

@@ -13,7 +13,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   const [mobileMenuVisibility, setMobileMenuVisibility] = useState<boolean>(false)
   const [selectedPanelFilterOption, setSelectedPanelFilterOption] = useState<string>()
   const [mainMenuFilterOption, setMainFilterOption] = useState<string>('Most Upvotes')
-
+  const [roadmapAmounts, setRoadmapsAmounts] = useState()
   return (
     <ThemeProvider theme={theme}>
       <Head>
@@ -29,7 +29,9 @@ function MyApp({ Component, pageProps }: AppProps) {
           selectedPanelFilterOption,
           setSelectedPanelFilterOption,
           mainMenuFilterOption,
-          setMainFilterOption
+          setMainFilterOption,
+          roadmapAmounts,
+          setRoadmapsAmounts
         }}>
         <Layout>
           <UserProvider>

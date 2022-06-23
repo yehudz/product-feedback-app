@@ -7,6 +7,7 @@ import Box from '@mui/material/Box';
 import {makeStyles} from '@mui/styles'
 import {Request} from '../../typings/common.types'
 import FeedbackCard from '../FeedbackView/FeedbackCard';
+import appContext from '../../context/appContext'
 interface RoadmapViewProps {
   requests: Request[]
 }
@@ -35,7 +36,6 @@ const useStyles = makeStyles((theme) => ({
 
 function TabPanel(props: TabPanelProps) {
   const { children, value, index, ...other } = props;
-
   return (
     <div
       role="tabpanel"
@@ -62,6 +62,8 @@ function a11yProps(index: number) {
 
 export default function RoadmapMobileView({requests}: RoadmapViewProps) {
   const [value, setValue] = React.useState(0);
+  const {roadmapAmounts} = React.useContext(appContext)
+
   const classes = useStyles();
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
@@ -89,9 +91,9 @@ export default function RoadmapMobileView({requests}: RoadmapViewProps) {
           textColor="inherit"
           className={classes.tabStyle}
         >
-          <Tab className={classes.tabStyle} label={`Planned (${planned.length})`} {...a11yProps(0)} sx={{textTransform: 'none'}} disableRipple/>
-          <Tab className={classes.tabStyle} label={`In-Progress (${inProgress.length})`} {...a11yProps(1)} sx={{textTransform: 'none'}} disableRipple/>
-          <Tab className={classes.tabStyle} label={`Live (${live.length})`} {...a11yProps(2)} sx={{textTransform: 'none'}} disableRipple/>
+          <Tab className={classes.tabStyle} label={`Planned (${roadmapAmounts[0].amount})`} {...a11yProps(0)} sx={{textTransform: 'none'}} disableRipple/>
+          <Tab className={classes.tabStyle} label={`In-Progress (${roadmapAmounts[1].amount})`} {...a11yProps(1)} sx={{textTransform: 'none'}} disableRipple/>
+          <Tab className={classes.tabStyle} label={`Live (${roadmapAmounts[2].amount})`} {...a11yProps(2)} sx={{textTransform: 'none'}} disableRipple/>
         </Tabs>
       </Box>
       <TabPanel value={value} index={0}>
