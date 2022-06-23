@@ -1,9 +1,22 @@
-.container {
+.container, .filterContainer {
   background-color: #fff;
   border-radius: 10px;
   max-width: 223px;
   padding: 24px;
   margin: 26px;
+  @media screen and (min-width: 768px) {
+    display: flex;
+    // justify-content: space-between;
+    flex-direction: column;
+    // gap: 18px;
+    height: 100%;
+    margin: 0;
+    max-width: 100%;
+  }
+}
+
+.filterContainer {
+  flex-direction: row;
 }
 
 .roadmapList {

@@ -58,7 +58,6 @@ const FeedbackView = ({requests}: FeedbackViewProps)=> {
       {filterSelection ? (filterSelection as Request[]).map((request: Request)=> {
         return(<FeedbackCard key={request.id} request={request}/>)
       }): <Box sx={{ width: '100%' }}>
-      <LinearProgress />
     </Box>}
     </>
   )

@@ -61,7 +61,7 @@ const RoadmapPanel = ()=> {
       </Grid>
       <Grid container>
         <div style={{width: '100%'}}>
-          {roadmapAmounts.map((item: RoadmapItem)=> {
+          {roadmapAmounts?.map((item: RoadmapItem)=> {
             return(
               <div key={item.color} className={PanelStyles.roadmapList}>
                 <div 

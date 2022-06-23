@@ -1,0 +1,31 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  height: 178px;
+  margin: 24px;
+  width: calc(100% - 48px);
+
+  .mainSection {
+    position: relative;
+    flex: 1;
+    height: 178px;
+    background-image: url('/assets/suggestions/tablet/background-header.png');
+    background-size: 100%;
+    background-position: 100% 100%;
+    border-radius: 10px;
+
+    .mainTitle {
+      position: absolute;
+      bottom: 48px;
+      left: 24px;
+    }
+
+    .subtitle {
+      position: absolute;
+      bottom: 24px;
+      left: 24px;
+      color: #ddd;
+      font-weight: 300 !important;
+    }
+  }
+}

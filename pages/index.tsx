@@ -14,6 +14,7 @@ const MobileNavMenu = React.lazy(()=> import('../components/MobileNavMenu/Mobile
 import prisma from '../db'
 import {Request} from '../typings/common.types'
 import TopBar from '../components/TopBar/TopBar';
+import { TopSection } from '../components/TopSection/TopSection';
 interface RoadmapProps {
   requests: Request[]
 }
@@ -52,11 +53,11 @@ const Home = ({requests}: RoadmapProps) => {
       }
     ])
 
-    if (window.innerWidth > 767) setIsMobile(false)
+    if (window.innerWidth >= 767) setIsMobile(false)
     else setIsMobile(true) 
 
     window.addEventListener('resize', (e)=> {
-      if (e.target?.innerWidth > 767) setIsMobile(false)
+      if (e.target?.innerWidth >= 767) setIsMobile(false)
       else setIsMobile(true)
     })
   }, [])
@@ -65,12 +66,13 @@ const Home = ({requests}: RoadmapProps) => {
       <Head>
         <title>Product Feedback</title>
       </Head>
+      {!isMobile && <TopSection />}
       {isMobile ? <MobileTopBarContainer /> : <TopBar />}
       
+      <Suspense fallback={<h1 style={{color: '#000'}}>Loading...</h1>}>
       {mobileMenuVisibility && <Suspense fallback={<h1>Loading</h1>}>
         <MobileNavMenu />
       </Suspense>}
-      <Suspense fallback={<h1 style={{color: '#000'}}>Loading...</h1>}>
         <FeedbackView requests={requests}/>
       </Suspense>
     </>

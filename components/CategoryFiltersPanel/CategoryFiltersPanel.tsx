@@ -38,11 +38,11 @@ const CategoryFiltersPanel = ()=> {
   }, [])
 
   return(
-    <Grid container className={PanelStyles.container} gap={1.5}>
+    <Grid container className={PanelStyles.filterContainer} gap={1.5}>
       {menu?.map((filter, i)=> {
         return(
           <Grid item key={filter?.name}>
-            <CategoryButton 
+            <CategoryButton
               className={filter?.selected === true ? 'active' : ''} 
               onClick={()=> selectOption(i)}
             >
