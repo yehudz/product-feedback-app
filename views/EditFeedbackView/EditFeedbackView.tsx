@@ -123,10 +123,10 @@ const EditFeedbackView = ({request}: EditFeedbackViewProps)=> {
         <Alert severity="error">{snackbarMessage}</Alert>
       </Snackbar>
       }
-      <Link href="/">
-        <GoBackBtnLight startIcon={<CaretLeft size={16}/>} disableRipple>Go Back</GoBackBtnLight>
-      </Link>
-      <Grid container justifyContent={'center'} mt={6}>
+      <Grid container justifyContent={'center'} mt={6} className="editFeedbackContainer">
+        <Link href="/">
+          <GoBackBtnLight startIcon={<CaretLeft size={16}/>} disableRipple className="editFeedbackGoBackBtn">Go Back</GoBackBtnLight>
+        </Link>
         <CardContainer 
           icon={icon} 
           text={text}

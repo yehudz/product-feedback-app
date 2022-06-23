@@ -81,7 +81,7 @@ const CardContainer = (
         <Stack p={2} gap={2} className="submitButtonsContainer">
           <PrimaryButton className='submitButton' fullWidth={true} onClick={async ()=> await saveFeedbackApiCall()}>{saveButtonText ? 'Save Changes' : 'Add Feedback'}</PrimaryButton>
           <Button3 fullWidth={true} className="cancelButton">Cancel</Button3>
-          {isEdit && <Button4 fullWidth={true} onClick={showDeleteWarning}>Delete</Button4>}
+          {isEdit && <Button4 fullWidth={true} onClick={showDeleteWarning} className="deleteButton">Delete</Button4>}
         </Stack>
       </CardContent>
     </CardWrapper>
