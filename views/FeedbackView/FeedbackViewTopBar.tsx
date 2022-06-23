@@ -19,7 +19,7 @@ const FeedbackViewTopBar = ({request}: FeedbackViewTopBarProps)=> {
       ml={-1}
     >
       <Link href="/">
-        <GoBackBtnLight startIcon={<CaretLeft size={16}/>}>Go Back</GoBackBtnLight>
+        <GoBackBtnLight startIcon={<CaretLeft size={16} />} disableRipple>Go Back</GoBackBtnLight>
       </Link>
       <Link href={`/editFeedback/${request.id}`}>
         <SecondaryButton>Edit Feedback</SecondaryButton>

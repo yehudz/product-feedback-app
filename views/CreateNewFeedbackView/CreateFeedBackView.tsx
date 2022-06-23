@@ -45,7 +45,7 @@ const CreateFeedbackContainer = ()=> {
         body: JSON.stringify(params),
         method: 'POST'
       }).then(()=> {
-        // window.location.assign('/')
+        window.location.assign('/')
       })
       } catch (error) {
         setSnackbarMessage('Something went wrong, please try again later')
@@ -75,7 +75,7 @@ const CreateFeedbackContainer = ()=> {
       </Snackbar>
       }
       <Link href="/">
-        <GoBackBtnLight startIcon={<CaretLeft size={16}/>}>Go Back</GoBackBtnLight>
+        <GoBackBtnLight startIcon={<CaretLeft size={16}/>} disableRipple>Go Back</GoBackBtnLight>
       </Link>
       <Grid container justifyContent={'center'} mt={6}>
         <CardContainer 
@@ -92,7 +92,7 @@ const CreateFeedbackContainer = ()=> {
           setCategorySelection={setCategorySelection}
           setMessage={setMessage}
           saveFeedbackApiCall={saveFeedbackApiCall}
-          isEdit={true}
+          isEdit={false}
         />
       </Grid>
     </>

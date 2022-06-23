@@ -41,6 +41,7 @@ const CommentCard = ({
       <Button 
         sx={{color: '#4661E6', width: '15px', fontSize: '14px'}}
         onClick={()=> setShowPostReplyInput(true)}
+        disableRipple
       >
         Reply
       </Button>

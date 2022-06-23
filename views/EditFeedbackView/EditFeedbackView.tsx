@@ -111,6 +111,7 @@ const EditFeedbackView = ({request}: EditFeedbackViewProps)=> {
   const detailLabel = 'Include any specify comments on what should be improved, added, etc.'
   const menuItems = ['Feature', 'UI', 'UX', 'Enhancement', 'Bug']
   const statusMenuItems = ['Suggestion', 'Planned', 'In-Progress', 'Live']
+  const saveButtonText = 'Save Changes'
   return(
     <>
       {!validate && <Snackbar
@@ -123,7 +124,7 @@ const EditFeedbackView = ({request}: EditFeedbackViewProps)=> {
       </Snackbar>
       }
       <Link href="/">
-        <GoBackBtnLight startIcon={<CaretLeft size={16}/>}>Go Back</GoBackBtnLight>
+        <GoBackBtnLight startIcon={<CaretLeft size={16} disableRipple/>}>Go Back</GoBackBtnLight>
       </Link>
       <Grid container justifyContent={'center'} mt={6}>
         <CardContainer 
@@ -145,6 +146,7 @@ const EditFeedbackView = ({request}: EditFeedbackViewProps)=> {
           statusMenuItems={statusMenuItems}
           setStatus={setStatus}
           showDeleteWarning={showDeleteWarning}
+          saveButtonText={saveButtonText}
         />
       </Grid>
       <Dialog

@@ -57,4 +57,5 @@ export interface CardProps {
   statusMenuItems?: string[]
   setStatus?: (status: string)=> void
   showDeleteWarning?: ()=> void
+  saveButtonText?: string
 }

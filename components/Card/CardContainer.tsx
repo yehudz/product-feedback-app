@@ -32,7 +32,8 @@ const CardContainer = (
     isEdit,
     statusMenuItems,
     setStatus,
-    showDeleteWarning
+    showDeleteWarning,
+    saveButtonText
   }: CardProps)=> {
   return (
     <CardWrapper elevation={0} sx={{overflow: 'visible'}}>
@@ -78,7 +79,7 @@ const CardContainer = (
           <InputField setValue={setMessage} multiLine={true} defaultValue={request?.description}/>
         </Box>
         <Stack p={2} gap={2}>
-          <PrimaryButton fullWidth={true} onClick={async ()=> await saveFeedbackApiCall()}>Add Feedback</PrimaryButton>
+          <PrimaryButton fullWidth={true} onClick={async ()=> await saveFeedbackApiCall()}>{saveButtonText ? 'Save Changes' : 'Add Feedback'}</PrimaryButton>
           <Button3 fullWidth={true}>Cancel</Button3>
           {isEdit && <Button4 fullWidth={true} onClick={showDeleteWarning}>Delete</Button4>}
         </Stack>
