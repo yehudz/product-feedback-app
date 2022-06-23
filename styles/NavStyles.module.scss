@@ -1,0 +1,38 @@
+@use './variables.scss';
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+  width: 100%;
+  padding: 16px 24px;
+  background: rgb(232,77,146);
+  background: linear-gradient(202deg, rgba(232,77,146,1) 0%, rgba(163,55,246,1) 50%, rgba(40,167,237,1) 100%);
+}
+
+.optionsMenuContainer {
+  display: flex;
+  position: relative;
+  align-items: center;
+  height: 72px;
+  max-width: calc(100% - 48px);
+  margin: 24px auto;
+  padding: 0px 24px 0 24px;
+  background: variables.$success-dark;
+  border-radius: 10px;
+
+  .suggestions {
+    display: flex;
+    align-items: center;
+    margin-right: 24px;
+    img {
+      margin-right: 12px;
+      width: 23px;
+    }
+  }
+  a {
+    position: absolute;
+    right: 24px;
+  }
+}

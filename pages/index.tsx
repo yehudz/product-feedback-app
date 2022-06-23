@@ -13,11 +13,12 @@ import appContext from '../context/appContext'
 const MobileNavMenu = React.lazy(()=> import('../components/MobileNavMenu/MobileNavMenu'));
 import prisma from '../db'
 import {Request} from '../typings/common.types'
+import TopBar from '../components/TopBar/TopBar';
 interface RoadmapProps {
   requests: Request[]
 }
 const Home = ({requests}: RoadmapProps) => {
-  const {mobileMenuVisibility, setRoadmapsAmounts} = useContext(appContext)
+  const {mobileMenuVisibility, setRoadmapsAmounts, isMobile, setIsMobile} = useContext(appContext)
   const planned = requests.filter(request=> {
     if (request.status === 'Planned') return request
   })
@@ -29,6 +30,9 @@ const Home = ({requests}: RoadmapProps) => {
   const live = requests.filter(request=> {
     if (request.status === 'Live') return request
   })
+
+  
+  console.log(isMobile)
   useEffect(()=> {
     setRoadmapsAmounts([
       {
@@ -47,13 +51,22 @@ const Home = ({requests}: RoadmapProps) => {
         amount: live.length
       }
     ])
+
+    if (window.innerWidth > 767) setIsMobile(false)
+    else setIsMobile(true) 
+
+    window.addEventListener('resize', (e)=> {
+      if (e.target?.innerWidth > 767) setIsMobile(false)
+      else setIsMobile(true)
+    })
   }, [])
   return (
     <>
       <Head>
         <title>Product Feedback</title>
       </Head>
-      <MobileTopBarContainer />
+      {isMobile ? <MobileTopBarContainer /> : <TopBar />}
+      
       {mobileMenuVisibility && <Suspense fallback={<h1>Loading</h1>}>
         <MobileNavMenu />
       </Suspense>}
