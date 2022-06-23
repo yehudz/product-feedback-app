@@ -9,16 +9,28 @@
   background-color: #fff;
   padding: 24px;
   grid-gap: 16px;
+  @media screen and (min-width: 768px) {
+    grid-template-columns: .15fr 1fr .15fr;
+  }
 
   .contentArea {
     grid-column-start: 1;
     grid-column-end: 3;
+    @media screen and (min-width: 768px) {
+      grid-column-start: 2;
+    grid-column-end: 3;
+    }
   }
 
   .upVoteButton {
     grid-column-start: 1;
     grid-column-end: 2;
     grid-row-start: 2;
+    @media screen and (min-width: 768px) {
+      grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    }
   }
 
   .commentsContainer {
@@ -30,6 +42,10 @@
     grid-column-start: 3;
     img {
       margin-right: 8px;
+    }
+    @media screen and (min-width: 768px) {
+      grid-row-start: 1;
+      grid-column-start: 3;
     }
   }
 
