@@ -59,8 +59,9 @@ const Home = ({requests}: RoadmapProps) => {
     if (window.innerWidth >= 767) setIsMobile(false)
     else setIsMobile(true) 
 
-    window.addEventListener('resize', (e)=> {
-      if (e.target?.innerWidth >= 767) setIsMobile(false)
+    window.addEventListener('resize', (event: UIEvent)=> {
+      const w = event.target as Window; 
+      if (w.innerWidth >= 767) setIsMobile(false)
       else setIsMobile(true)
     })
   }, [])
