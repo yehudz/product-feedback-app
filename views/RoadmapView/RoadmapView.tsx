@@ -10,9 +10,9 @@ const RoadmapView = ({requests}: RoadmapViewProps) => {
   return(
     <>
       <RoadmapViewTopBar />
-      <Suspense fallback={<h1>Loading...</h1>}>
+      {/* <Suspense fallback={<h1>Loading...</h1>}> */}
         <RoadmapMobileView requests={requests}/>
-      </Suspense>
+      {/* </Suspense> */}
     </>
   )
 }

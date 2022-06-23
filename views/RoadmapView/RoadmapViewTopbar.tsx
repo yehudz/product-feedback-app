@@ -11,7 +11,7 @@ const RoadmapViewTopBar = ()=> {
       <Link href="/">
         <GoBackBtnDark startIcon={<CaretLeft size={16}/>} disableRipple>Go Back</GoBackBtnDark>
       </Link>
-      <Typography variant="h2" color="white" pl={5} mt={-1}>Roadmap</Typography>
+      <Typography variant="h2" color="white" pl={5} mt={0}>Roadmap</Typography>
       <Link href='/createNewFeedback' passHref>
         <PrimaryButton className={RoadmapViewStyles.primaryButton}>+ Add Feedback</PrimaryButton>
       </Link>

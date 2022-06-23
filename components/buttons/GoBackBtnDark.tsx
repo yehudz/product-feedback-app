@@ -11,7 +11,7 @@ const GoBackBtnDark = styled(Button)(({ theme }) => ({
   textTransform: 'none',
   backgroundColor: theme.palette.success.main,
   '&:hover': {
-    backgroundColor: '#373F68',
+    // backgroundColor: '#373F68',
     textDecoration: 'underline',
   },
 }));
