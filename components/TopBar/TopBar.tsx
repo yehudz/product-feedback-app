@@ -3,13 +3,18 @@ import DropDownMenu from "../DropDownMenu"
 import PrimaryButton from "../buttons/PrimaryButton"
 import Link from 'next/link'
 import { Box, Typography } from '@mui/material'
-const TopBar = ()=> {
+
+interface TopBarProps {
+  suggestions: number
+}
+
+const TopBar = ({suggestions}: TopBarProps)=> {
   const menuItems = ['Most Upvotes', 'Least Upvotes', 'Most Comments', 'Least Comments']
   return (
     <div className={NavStyles.optionsMenuContainer}>
       <Box className={NavStyles.suggestions}>
         <img src="/assets/suggestions/icon-suggestions.svg" />
-        <Typography variant='h3' color="white">6 Suggestions</Typography>
+        <Typography variant='h3' color="white">{suggestions} Suggestions</Typography>
       </Box>
       <DropDownMenu menuItems={menuItems} sortDropdown={true} mobile={false}/>
       <Link href='/createNewFeedback' passHref>

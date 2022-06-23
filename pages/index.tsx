@@ -32,8 +32,11 @@ const Home = ({requests}: RoadmapProps) => {
     if (request.status === 'Live') return request
   })
 
+  const suggestions = requests.filter(request=> {
+    if (request.status === 'Suggestion') return request
+  })
+
   
-  console.log(isMobile)
   useEffect(()=> {
     setRoadmapsAmounts([
       {
@@ -67,7 +70,7 @@ const Home = ({requests}: RoadmapProps) => {
         <title>Product Feedback</title>
       </Head>
       {!isMobile && <TopSection />}
-      {isMobile ? <MobileTopBarContainer /> : <TopBar />}
+      {isMobile ? <MobileTopBarContainer /> : <TopBar suggestions={suggestions.length}/>}
       
       <Suspense fallback={<h1 style={{color: '#000'}}>Loading...</h1>}>
       {mobileMenuVisibility && <Suspense fallback={<h1>Loading</h1>}>
