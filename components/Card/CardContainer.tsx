@@ -78,9 +78,9 @@ const CardContainer = (
           <Typography variant='body2' color="success.main" fontSize={13} gutterBottom>{detailLabel}</Typography>
           <InputField setValue={setMessage} multiLine={true} defaultValue={request?.description}/>
         </Box>
-        <Stack p={2} gap={2}>
-          <PrimaryButton fullWidth={true} onClick={async ()=> await saveFeedbackApiCall()}>{saveButtonText ? 'Save Changes' : 'Add Feedback'}</PrimaryButton>
-          <Button3 fullWidth={true}>Cancel</Button3>
+        <Stack p={2} gap={2} className="submitButtonsContainer">
+          <PrimaryButton className='submitButton' fullWidth={true} onClick={async ()=> await saveFeedbackApiCall()}>{saveButtonText ? 'Save Changes' : 'Add Feedback'}</PrimaryButton>
+          <Button3 fullWidth={true} className="cancelButton">Cancel</Button3>
           {isEdit && <Button4 fullWidth={true} onClick={showDeleteWarning}>Delete</Button4>}
         </Stack>
       </CardContent>

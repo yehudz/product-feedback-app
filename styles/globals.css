@@ -28,4 +28,23 @@ a {
       width: 100%;
       padding: 0 15px;
   }
+
+  .createFeedbackContainer {
+    max-width: 540px;
+    margin: 56px auto 24px auto;
+  }
+
+  .submitButtonsContainer {
+    flex-direction: row-reverse;
+  }
+
+  .submitButtonsContainer .submitButton {
+    width: 144px;
+    min-width: 144px;
+  }
+
+  .submitButtonsContainer .cancelButton {
+    width: 93px;
+    min-width: 93px;
+  }
 }

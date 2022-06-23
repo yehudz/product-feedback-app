@@ -4,7 +4,7 @@ import CreateFeedbackContainer from "../views/CreateNewFeedbackView/CreateFeedBa
 
 const CreateNewFeedbackView = ()=> {
   return(
-    <Box mt={3}>
+    <Box mt={3} className="createFeedbackContainer">
       <CreateFeedbackContainer />
     </Box>
   )
