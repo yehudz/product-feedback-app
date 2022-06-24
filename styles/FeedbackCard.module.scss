@@ -76,3 +76,29 @@
 .capitalize {
   text-transform: capitalize;
 }
+
+.desktopView {
+  width: calc(100% - 56px);
+}
+
+.desktopView .container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 8px;
+  margin: 8px 8px 24px 0px;
+  height: 251px;
+  .contentArea {
+    grid-column-start: 1;
+    grid-column-end: 4;
+  }
+  .upVoteButton {
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 2;
+  }
+
+  .commentsContainer {
+    grid-row-start: 2;
+    grid-column-start: 3;
+  }
+}

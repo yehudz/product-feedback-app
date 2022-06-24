@@ -59,13 +59,15 @@ const FeedbackCard = ({request, isRoadmap, status}: FeedbackCardProps)=> {
             variant='h4' 
             color="success.main"
             sx={{cursor: 'pointer'}} 
+            noWrap
             gutterBottom>
               {request.title}
           </Typography>
         </Link>
         <Typography 
           variant='body2' 
-          color="success.main" 
+          color="success.main"
+          noWrap 
           mb={1.3}>
             {request.description}
         </Typography>

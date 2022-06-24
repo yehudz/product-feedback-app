@@ -1,5 +1,9 @@
 .topBarContainer {
   position: relative;
+  @media screen and (min-width: 768px) {
+    border-radius: 10px;
+    margin: 32px;
+  }
   .primaryButton {
     position: absolute;
     top: 50%; 

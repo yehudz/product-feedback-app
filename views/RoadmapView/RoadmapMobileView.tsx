@@ -119,8 +119,8 @@ export default function RoadmapMobileView({requests}: RoadmapViewProps) {
       <TabPanel value={value} index={2}>
         {live.map(item=> {
           let statusParams = {
-            title: 'In-Progress',
-            color: '#AD1FEA'
+            title: 'Live',
+            color: '#62BCFA'
           }
           return(
             <FeedbackCard key={item.id} request={item} isRoadmap={true} status={statusParams}/>

@@ -9,9 +9,9 @@ const RoadmapViewTopBar = ()=> {
   return(
     <Box height={'100px'} bgcolor={'success.main'} pt={1.5} className={RoadmapViewStyles.topBarContainer}>
       <Link href="/">
-        <GoBackBtnDark startIcon={<CaretLeft size={16}/>} disableRipple>Go Back</GoBackBtnDark>
+        <GoBackBtnDark startIcon={<CaretLeft size={16}/>} disableRipple className="roadmapGoBackBtn">Go Back</GoBackBtnDark>
       </Link>
-      <Typography variant="h2" color="white" pl={5} mt={0}>Roadmap</Typography>
+      <Typography variant="h2" color="white" pl={3} mt={-0.5}>Roadmap</Typography>
       <Link href='/createNewFeedback' passHref>
         <PrimaryButton className={RoadmapViewStyles.primaryButton}>+ Add Feedback</PrimaryButton>
       </Link>

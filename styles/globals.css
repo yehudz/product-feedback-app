@@ -64,4 +64,9 @@ a {
     position: absolute;
     left: 32px;
   }
+
+  .roadmapGoBackBtn {
+    margin-left: 0px;
+    width: 118px;
+  }
 }
