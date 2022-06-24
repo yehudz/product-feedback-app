@@ -10,7 +10,11 @@
   padding: 24px;
   grid-gap: 16px;
   @media screen and (min-width: 768px) {
-    grid-template-columns: .15fr 1fr .15fr;
+    grid-template-columns: .12fr 1fr .15fr;
+  }
+
+  @media screen and (min-width: 1080px) {
+    width: 100%;
   }
 
   .contentArea {
