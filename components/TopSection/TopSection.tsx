@@ -10,7 +10,7 @@ export const TopSection = ()=> {
       <Grid item flex={1}>
         <TopMainSection />
       </Grid>
-      <Grid item flex={1}>
+      <Grid item flex={1} className="categoryFilterSection">
         <TopFilterSection /> 
       </Grid>
       <Grid item flex={1}>

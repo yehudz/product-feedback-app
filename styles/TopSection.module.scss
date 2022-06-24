@@ -5,6 +5,13 @@
   margin: 24px 24px 48px 24px;
   width: calc(100% - 48px) !important;
 
+  @media screen and (min-width: 1080px) {
+    flex-direction: column;
+    height: 100%;
+    width: 255px !important;
+    margin: 24px 0px 48px 24px;
+  }
+
   .mainSection {
     position: relative;
     flex: 1;
@@ -13,6 +20,10 @@
     background-size: 100%;
     background-position: 100% 100%;
     border-radius: 10px;
+
+    @media screen and (min-width: 1080px) {
+      height: 137px;
+    }
 
     .mainTitle {
       position: absolute;

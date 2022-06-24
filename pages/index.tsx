@@ -66,20 +66,22 @@ const Home = ({requests}: RoadmapProps) => {
     })
   }, [])
   return (
-    <>
+    <div className='mainContainer'>
       <Head>
         <title>Product Feedback</title>
       </Head>
       {!isMobile && <TopSection />}
-      {isMobile ? <MobileTopBarContainer /> : <TopBar suggestions={suggestions.length}/>}
-      
-      <Suspense fallback={<h1 style={{color: '#000'}}>Loading...</h1>}>
-      {mobileMenuVisibility && <Suspense fallback={<h1>Loading</h1>}>
-        <MobileNavMenu />
-      </Suspense>}
-        <FeedbackView requests={requests}/>
-      </Suspense>
-    </>
+      <div className='feedbackViewContainer'>
+        {isMobile ? <MobileTopBarContainer /> : <TopBar suggestions={suggestions.length}/>}
+        <Suspense fallback={<h1 style={{color: '#000'}}>Loading...</h1>}>
+        {mobileMenuVisibility && <Suspense fallback={<h1>Loading</h1>}>
+          <MobileNavMenu />
+        
+        </Suspense>}
+          <FeedbackView requests={requests}/>
+        </Suspense>
+      </div>
+    </div>
   )
 }
 

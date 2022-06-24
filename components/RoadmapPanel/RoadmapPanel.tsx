@@ -12,25 +12,6 @@ type RoadmapItem = {
 
 const RoadmapPanel = ()=> {
   const {roadmapAmounts} = useContext(appContext)
-  // // Dummy data
-  // const roadmapList = [
-  //   {
-  //     color: '#F49F85',
-  //     title: 'Planned',
-  //     amount: 2
-  //   },
-  //   {
-  //     color: '#AD1FEA',
-  //     title: 'In-Progress',
-  //     amount: 3
-  //   },
-  //   {
-  //     color: '#62BCFA',
-  //     title: 'Live',
-  //     amount: 1
-  //   }
-  // ]
-
   return(
     <Box className={PanelStyles.container}>
       <Grid 

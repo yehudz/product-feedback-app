@@ -70,3 +70,11 @@ a {
     width: 118px;
   }
 }
+
+@media screen and (min-width: 1080px) {
+  .mainContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+}
