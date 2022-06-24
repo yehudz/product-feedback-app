@@ -77,4 +77,16 @@ a {
     flex-direction: row;
     justify-content: center;
   }
+
+  .viewFeedbackContainer {
+    max-width: 730px;
+    margin: 80px auto;
+  }
+  .addCommentContainer {
+    position: relative;
+    max-width: 680px;
+    width: auto;
+
+    padding: 0;
+  }
 }
