@@ -12,14 +12,14 @@ const RoadmapView = ({requests}: RoadmapViewProps) => {
   const {isMobile} = useContext(appContext)
   console.log(isMobile)
   return(
-    <>
+    <div className="roadmapViewContainer">
       <RoadmapViewTopBar />
       {!isMobile && <RoadmapViewContainer requests={requests}/>}
       {isMobile && <Suspense fallback={<h1>Loading...</h1>}>
         <RoadmapMobileView requests={requests}/>
       </Suspense>}
      
-    </>
+    </div>
   )
 }
 
