@@ -8,7 +8,7 @@
   @media screen and (min-width: 1080px) {
     position: sticky;
     top: 24px;
-    flex-direction: column;
+    flex-direction: column !important;
     height: 100%;
     width: 255px !important;
     margin: 24px 0px 48px 24px;
