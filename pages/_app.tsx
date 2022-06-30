@@ -11,7 +11,8 @@ import { useState } from 'react';
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [mobileMenuVisibility, setMobileMenuVisibility] = useState<boolean>(false)
-  const [selectedPanelFilterOption, setSelectedPanelFilterOption] = useState<string>()
+  const [selectedPanelFilterOption, setSelectedPanelFilterOption] = useState<number>()
+  const [categoryFilterSelected, setCategoryFilterSelected] = useState<string>()
   const [mainMenuFilterOption, setMainFilterOption] = useState<string>('Most Upvotes')
   const [roadmapAmounts, setRoadmapsAmounts] = useState()
   const [isMobile, setIsMobile] = useState<boolean>()
@@ -34,7 +35,9 @@ function MyApp({ Component, pageProps }: AppProps) {
           roadmapAmounts,
           setRoadmapsAmounts,
           isMobile,
-          setIsMobile
+          setIsMobile,
+          categoryFilterSelected,
+          setCategoryFilterSelected
         }}>
         <Layout>
           <UserProvider>

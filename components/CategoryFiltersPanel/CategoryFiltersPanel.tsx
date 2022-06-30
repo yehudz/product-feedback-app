@@ -4,7 +4,7 @@ import PanelStyles from '../../styles/Panel.module.scss'
 import appContext from "../../context/appContext"
 import { useContext, useEffect, useState } from "react"
 const CategoryFiltersPanel = ()=> {
-  const {selectedPanelFilterOption, setSelectedPanelFilterOption} = useContext(appContext)
+  const {selectedPanelFilterOption, setSelectedPanelFilterOption, setCategoryFilterSelected} = useContext(appContext)
   const filtersMenu = [
       {name: 'All', selected: true}, 
       {name: 'UI', selected: false}, 
@@ -19,6 +19,7 @@ const CategoryFiltersPanel = ()=> {
 
   function selectOption(index: number) {
     setSelectedPanelFilterOption(index)
+    setCategoryFilterSelected(filtersMenu[index].name)
     let updatedMenu = filtersMenu.map((filter, i)=> {
       if (i === index) return {
         name: filter.name,

@@ -6,6 +6,7 @@ import DropDownMenu from '../DropDownMenu';
 import PrimaryButton from '../buttons/PrimaryButton';
 import Button3 from '../buttons/Button3'
 import Button4 from '../buttons/Button4'
+import Link from 'next/link';
 export const CardWrapper = styled(Card)(({ theme }) => ({
  backgroundColor: '#fff',
  width: '90%',
@@ -80,7 +81,9 @@ const CardContainer = (
         </Box>
         <Stack p={2} gap={2} className="submitButtonsContainer">
           <PrimaryButton className='submitButton' fullWidth={true} onClick={async ()=> await saveFeedbackApiCall()}>{saveButtonText ? 'Save Changes' : 'Add Feedback'}</PrimaryButton>
-          <Button3 fullWidth={true} className="cancelButton">Cancel</Button3>
+          <Link href="/">
+            <Button3 fullWidth={true} className="cancelButton">Cancel</Button3>
+          </Link>
           {isEdit && <Button4 fullWidth={true} onClick={showDeleteWarning} className="deleteButton">Delete</Button4>}
         </Stack>
       </CardContent>
